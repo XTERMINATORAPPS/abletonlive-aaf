@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="clipGradient1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#00e837;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#00e837;stop-opacity:0.4" />
+    </linearGradient>
+    <linearGradient id="clipGradient2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#00e837;stop-opacity:0.6" />
+      <stop offset="100%" style="stop-color:#00e837;stop-opacity:0.3" />
+    </linearGradient>
+    <linearGradient id="clipGradient3" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#00e837;stop-opacity:0.9" />
+      <stop offset="100%" style="stop-color:#00e837;stop-opacity:0.5" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Clip 1 - Top -->
+  <rect x="20" y="30" width="140" height="35" rx="4" fill="url(#clipGradient1)"/>
+  <path d="M 30 47.5 L 35 42 L 40 52 L 45 40 L 50 55 L 55 45 L 60 50 L 65 43 L 70 53 L 75 44 L 80 51 L 85 46 L 90 54 L 95 42 L 100 52 L 105 45 L 110 50 L 115 44 L 120 53 L 125 46 L 130 51 L 135 45 L 140 52 L 145 47 L 150 47.5" 
+        stroke="#f4f4f4" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Clip 2 - Middle -->
+  <rect x="50" y="85" width="130" height="35" rx="4" fill="url(#clipGradient2)"/>
+  <path d="M 60 102.5 L 65 97 L 70 107 L 75 95 L 80 110 L 85 100 L 90 105 L 95 98 L 100 108 L 105 99 L 110 106 L 115 101 L 120 109 L 125 97 L 130 107 L 135 100 L 140 105 L 145 99 L 150 108 L 155 101 L 160 106 L 165 100 L 170 102.5" 
+        stroke="#f4f4f4" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Clip 3 - Bottom -->
+  <rect x="30" y="140" width="120" height="35" rx="4" fill="url(#clipGradient3)"/>
+  <path d="M 40 157.5 L 45 152 L 50 162 L 55 150 L 60 165 L 65 155 L 70 160 L 75 153 L 80 163 L 85 154 L 90 161 L 95 156 L 100 164 L 105 152 L 110 162 L 115 155 L 120 160 L 125 154 L 130 163 L 135 156 L 140 157.5" 
+        stroke="#f4f4f4" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

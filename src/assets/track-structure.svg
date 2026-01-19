@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="trackGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#00e837;stop-opacity:0.6" />
+      <stop offset="100%" style="stop-color:#00e837;stop-opacity:0.3" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Track 1 -->
+  <rect x="20" y="40" width="160" height="25" rx="3" fill="none"/>
+  <rect x="30" y="45" width="50" height="15" rx="2" fill="url(#trackGradient)"/>
+  <rect x="90" y="45" width="70" height="15" rx="2" fill="url(#trackGradient)"/>
+  
+  <!-- Track 2 -->
+  <rect x="20" y="75" width="160" height="25" rx="3" fill="none"/>
+  <rect x="30" y="80" width="40" height="15" rx="2" fill="url(#trackGradient)"/>
+  <rect x="80" y="80" width="60" height="15" rx="2" fill="url(#trackGradient)"/>
+  <rect x="150" y="80" width="20" height="15" rx="2" fill="url(#trackGradient)"/>
+  
+  <!-- Track 3 -->
+  <rect x="20" y="110" width="160" height="25" rx="3" fill="none"/>
+  <rect x="30" y="115" width="80" height="15" rx="2" fill="url(#trackGradient)"/>
+  <rect x="120" y="115" width="50" height="15" rx="2" fill="url(#trackGradient)"/>
+  
+  <!-- Track 4 -->
+  <rect x="20" y="145" width="160" height="25" rx="3" fill="none"/>
+  <rect x="30" y="150" width="45" height="15" rx="2" fill="url(#trackGradient)"/>
+  <rect x="85" y="150" width="55" height="15" rx="2" fill="url(#trackGradient)"/>
+  <rect x="150" y="150" width="20" height="15" rx="2" fill="url(#trackGradient)"/>
+</svg>

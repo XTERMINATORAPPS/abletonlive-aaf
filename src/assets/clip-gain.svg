@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="clipGainGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#00e837;stop-opacity:0.7" />
+      <stop offset="100%" style="stop-color:#00e837;stop-opacity:0.4" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Audio clip -->
+  <rect x="40" y="70" width="120" height="60" rx="4" fill="url(#clipGainGradient)"/>
+  
+  <!-- Waveform -->
+  <path d="M 50 100 L 55 90 L 60 110 L 65 85 L 70 115 L 75 95 L 80 105 L 85 88 L 90 112 L 95 92 L 100 108 L 105 94 L 110 110 L 115 87 L 120 113 L 125 96 L 130 106 L 135 91 L 140 111 L 145 98 L 150 100" 
+        stroke="#f4f4f4" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Gain slider/fader on the right -->
+  <rect x="165" y="50" width="20" height="100" rx="3" fill="none"/>
+  <rect x="167" y="90" width="16" height="50" rx="2" fill="#00e837" opacity="0.3"/>
+  
+  <!-- Fader handle -->
+  <rect x="163" y="88" width="24" height="8" rx="2" fill="#00e837" stroke="#f4f4f4" stroke-width="1.5"/>
+  <line x1="169" y1="92" x2="181" y2="92" stroke="#f4f4f4" stroke-width="1.5"/>
+</svg>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="fadeGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#00e837;stop-opacity:0.1" />
+      <stop offset="50%" style="stop-color:#00e837;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#00e837;stop-opacity:0.1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Single large clip with fade in and fade out -->
+  <rect x="30" y="70" width="140" height="60" rx="4" fill="url(#fadeGradient)"/>
+  
+  <!-- Waveform with fade effect (squashed at sides) -->
+  <path d="M 40 100 L 45 98 L 50 102 L 55 96 L 60 105 L 65 92 L 70 108 L 75 88 L 80 112 L 85 87 L 90 113 L 95 86 L 100 114 L 105 86 L 110 113 L 115 87 L 120 112 L 125 88 L 130 108 L 135 92 L 140 105 L 145 96 L 150 102 L 155 98 L 160 100" 
+        stroke="#f4f4f4" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Fade in curve -->
+  <path d="M 30 130 L 85 70" stroke="#00e837" stroke-width="2.5" stroke-dasharray="4,3" opacity="0.8"/>
+  
+  <!-- Fade out curve -->
+  <path d="M 115 70 L 170 130" stroke="#00e837" stroke-width="2.5" stroke-dasharray="4,3" opacity="0.8"/>
+</svg>
