@@ -2,7 +2,11 @@ import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import logo from "../assets/logo.svg";
 
-const Navbar = () => {
+interface NavbarProps {
+  onBuyNowClick: () => void;
+}
+
+const Navbar = ({ onBuyNowClick }: NavbarProps) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -17,6 +21,7 @@ const Navbar = () => {
   const navLinks = [
     { href: "#features", label: "Features" },
     { href: "#pricing", label: "Pricing" },
+    { href: "/help/index.html", label: "Documentation" },
     { href: "#bug-report", label: "Bug Report" },
   ];
 
@@ -43,14 +48,12 @@ const Navbar = () => {
                 {link.label}
               </a>
             ))}
-            <a
-              href="https://gumroad.com/l/PRODUCT_ID"
-              target="_blank"
-              rel="noopener noreferrer"
+            <button
+              onClick={onBuyNowClick}
               className="bg-primary text-primary-foreground font-semibold px-6 py-2 rounded-lg transition-all duration-300 hover:brightness-110"
             >
               Buy Now
-            </a>
+            </button>
           </div>
 
           <button
@@ -75,14 +78,15 @@ const Navbar = () => {
                   {link.label}
                 </a>
               ))}
-              <a
-                href="https://gumroad.com/l/PRODUCT_ID"
-                target="_blank"
-                rel="noopener noreferrer"
+              <button
+                onClick={() => {
+                  onBuyNowClick();
+                  setIsMobileMenuOpen(false);
+                }}
                 className="bg-primary text-primary-foreground font-semibold px-6 py-2 rounded-lg text-center"
               >
                 Buy Now
-              </a>
+              </button>
             </div>
           </div>
         )}

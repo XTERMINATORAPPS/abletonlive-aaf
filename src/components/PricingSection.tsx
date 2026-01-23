@@ -2,10 +2,12 @@ import { Check, Zap } from "lucide-react";
 
 const features = [
   "Lifetime license",
-  "Free updates",
+  "Free Lifetime updates",
   "Email support",
-  "All DAW formats supported",
+  "All DAWs & NLEs formats supported",
   "No subscription required",
+  "Cross Platform",
+  "One License per device"
 ];
 
 const PricingSection = () => {
@@ -36,7 +38,7 @@ const PricingSection = () => {
 
             <div className="mb-6">
               <div className="text-5xl font-bold text-foreground mb-2">
-                $49
+                $50
               </div>
               <p className="text-muted-foreground">one-time payment</p>
             </div>
@@ -53,7 +55,7 @@ const PricingSection = () => {
             </ul>
 
             <a
-              href="https://gumroad.com/l/PRODUCT_ID"
+              href="https://xterminatorapps.gumroad.com/l/abletonliveaaf"
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary w-full inline-flex items-center justify-center gap-2"

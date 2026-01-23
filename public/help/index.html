@@ -1,0 +1,1442 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AAF to Ableton Live Converter - Documentation</title>
+  <meta name="description"
+    content="Convert AAF files from Pro Tools, DaVinci Resolve, Logic Pro, and more to Ableton Live projects. Documentation and help guide." />
+  <meta name="author" content="Abletonlive.aaf" />
+  <meta property="og:title" content="AAF to Ableton Live Converter" />
+  <meta property="og:description"
+    content="Convert AAF files from various DAWs & NLEs into Ableton Live projects. Preserves audio clips, timing, volume automation, fades, and track structure." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" href="favicon.ico" />
+
+  <style>
+    /* Font Definitions */
+    @font-face {
+      font-family: 'Samsung Sharp Sans';
+      src: url('fonts/SamsungSharpSans-Regular.otf') format('opentype');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'Samsung Sharp Sans';
+      src: url('fonts/SamsungSharpSans-Medium.otf') format('opentype');
+      font-weight: 500;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'Samsung Sharp Sans';
+      src: url('fonts/SamsungSharpSans-Bold.otf') format('opentype');
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    /* CSS Variables */
+    :root {
+      --background: hsl(0 0% 8%);
+      --foreground: hsl(0 0% 96%);
+      --card: hsl(0 0% 11%);
+      --card-foreground: hsl(0 0% 96%);
+      --primary: hsl(134 100% 45%);
+      --primary-foreground: hsl(0 0% 8%);
+      --secondary: hsl(0 0% 15%);
+      --secondary-foreground: hsl(0 0% 96%);
+      --muted: hsl(0 0% 18%);
+      --muted-foreground: hsl(0 0% 65%);
+      --accent: hsl(134 100% 45%);
+      --destructive: hsl(0 72% 51%);
+      --warning: hsl(40 100% 50%);
+      --border: hsl(0 0% 20%);
+      --radius: 0.5rem;
+    }
+
+    /* Reset & Base Styles */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Samsung Sharp Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: var(--background);
+      color: var(--foreground);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Layout */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* Header */
+    header {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .header-content {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1.5rem 0;
+    }
+
+    .header-content img {
+      height: 2.5rem;
+      width: auto;
+    }
+
+    .header-text {
+      text-align: right;
+    }
+
+    .header-text h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--foreground);
+    }
+
+    .header-text p {
+      color: var(--muted-foreground);
+    }
+
+    /* Navigation */
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      justify-content: center;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    nav a {
+      padding: 0.375rem 0.75rem;
+      font-size: 0.875rem;
+      color: var(--muted-foreground);
+      text-decoration: none;
+      border-radius: var(--radius);
+      transition: all 0.2s ease;
+    }
+
+    nav a:hover {
+      color: var(--primary);
+      background-color: rgba(0, 230, 64, 0.1);
+    }
+
+    /* Main Content */
+    main {
+      padding-bottom: 5rem;
+    }
+
+    section {
+      margin-bottom: 3rem;
+    }
+
+    section h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--foreground);
+      margin-bottom: 1.5rem;
+    }
+
+    /* Card Styles */
+    .card {
+      background-color: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.75rem 1rem;
+      background-color: rgba(255, 255, 255, 0.03);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .card-header img {
+      height: 2rem;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .card-header h3 {
+      font-weight: 600;
+      color: var(--foreground);
+    }
+
+    /* Intro Card */
+    .intro-card {
+      border-left: 4px solid var(--primary);
+      background-color: var(--card);
+      padding: 1.5rem;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+    }
+
+    .intro-card p {
+      color: var(--foreground);
+      line-height: 1.7;
+    }
+
+    .intro-card .footnote {
+      font-size: 0.75rem;
+      color: var(--muted-foreground);
+      margin-top: 0.75rem;
+      text-align: right;
+    }
+
+    /* DAW Logos */
+    .daw-logos {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      padding: 1.5rem 1rem;
+      background-color: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+    }
+
+    .daw-logos span {
+      font-size: 0.875rem;
+      color: var(--muted-foreground);
+      font-weight: 500;
+    }
+
+    .daw-logos img {
+      width: 2.5rem;
+      height: 2.5rem;
+      object-fit: contain;
+    }
+
+    /* Feature Grid */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1rem;
+    }
+
+    .feature-card {
+      padding: 1.5rem;
+      background-color: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      transition: all 0.3s ease;
+    }
+
+    .feature-card:hover {
+      border-color: rgba(0, 230, 64, 0.5);
+      box-shadow: 0 0 40px -10px rgba(0, 230, 64, 0.15);
+    }
+
+    .feature-card .icon-wrapper {
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: var(--radius);
+      background-color: rgba(0, 230, 64, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+
+    .feature-card .icon-wrapper svg {
+      width: 1.25rem;
+      height: 1.25rem;
+      color: var(--primary);
+    }
+
+    .feature-card h3 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: var(--foreground);
+      margin-bottom: 0.5rem;
+    }
+
+    .feature-card p {
+      font-size: 0.875rem;
+      color: var(--muted-foreground);
+      line-height: 1.6;
+    }
+
+    /* Tables */
+    .table-wrapper {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th {
+      text-align: left;
+      padding: 0.75rem 1rem;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--foreground);
+      background-color: rgba(255, 255, 255, 0.03);
+      border-bottom: 1px solid var(--border);
+    }
+
+    td {
+      padding: 0.75rem 1rem;
+      font-size: 0.875rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    tr:hover {
+      background-color: rgba(255, 255, 255, 0.02);
+    }
+
+    td.feature {
+      color: var(--foreground);
+      font-weight: 500;
+    }
+
+    td.limitation {
+      color: var(--muted-foreground);
+    }
+
+    td.workaround {
+      color: var(--primary);
+    }
+
+    /* Accordion */
+    .accordion {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .accordion-item {
+      background-color: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    .accordion-trigger {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: none;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+
+    .accordion-trigger:hover {
+      background-color: rgba(255, 255, 255, 0.03);
+    }
+
+    .accordion-trigger .trigger-content {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .accordion-trigger img {
+      height: 2rem;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .accordion-trigger span {
+      font-weight: 600;
+      color: var(--foreground);
+    }
+
+    .accordion-trigger .chevron {
+      width: 1rem;
+      height: 1rem;
+      color: var(--muted-foreground);
+      transition: transform 0.2s ease;
+    }
+
+    .accordion-item.open .accordion-trigger .chevron {
+      transform: rotate(180deg);
+    }
+
+    .accordion-content {
+      display: none;
+      padding: 0 1rem 1rem;
+    }
+
+    .accordion-item.open .accordion-content {
+      display: block;
+    }
+
+    .accordion-content ol {
+      margin-top: 0.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .accordion-content li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      font-size: 0.875rem;
+      color: var(--muted-foreground);
+    }
+
+    .accordion-content li.important {
+      color: var(--primary);
+    }
+
+    .accordion-content li.warning {
+      color: var(--warning);
+    }
+
+    .step-number {
+      width: 1.25rem;
+      height: 1.25rem;
+      border-radius: 50%;
+      background-color: var(--muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--foreground);
+      flex-shrink: 0;
+    }
+
+    /* Alert Boxes */
+    .alert {
+      border-radius: var(--radius);
+      border-left: 4px solid;
+      padding: 1rem;
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    .alert.error {
+      border-left-color: var(--destructive);
+      background-color: rgba(239, 68, 68, 0.1);
+    }
+
+    .alert.warning {
+      border-left-color: var(--warning);
+      background-color: rgba(255, 165, 0, 0.1);
+    }
+
+    .alert.tip {
+      border-left-color: var(--primary);
+      background-color: rgba(0, 230, 64, 0.1);
+    }
+
+    .alert svg {
+      width: 1.25rem;
+      height: 1.25rem;
+      flex-shrink: 0;
+      margin-top: 0.125rem;
+    }
+
+    .alert.error svg {
+      color: var(--destructive);
+    }
+
+    .alert.warning svg {
+      color: var(--warning);
+    }
+
+    .alert.tip svg {
+      color: var(--primary);
+    }
+
+    .alert h4 {
+      font-weight: 600;
+      color: var(--foreground);
+      margin-bottom: 0.5rem;
+    }
+
+    .alert ul {
+      font-size: 0.875rem;
+      color: var(--muted-foreground);
+      padding-left: 1.25rem;
+    }
+
+    .alert li {
+      margin-bottom: 0.25rem;
+    }
+
+    /* Info Section */
+    .info-section {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+
+    .info-section .icon-wrapper {
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: var(--radius);
+      background-color: rgba(0, 230, 64, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .info-section .icon-wrapper svg {
+      width: 1.25rem;
+      height: 1.25rem;
+      color: var(--primary);
+    }
+
+    .info-section ul {
+      color: var(--muted-foreground);
+      padding-left: 1.25rem;
+      margin-top: 0.75rem;
+    }
+
+    .info-section li {
+      margin-bottom: 0.5rem;
+    }
+
+    /* Output Items */
+    .output-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.75rem;
+      background-color: rgba(255, 255, 255, 0.03);
+      border-radius: var(--radius);
+      margin-bottom: 0.75rem;
+    }
+
+    .output-item svg {
+      width: 1.25rem;
+      height: 1.25rem;
+      color: var(--primary);
+    }
+
+    .output-item code {
+      font-family: monospace;
+      font-size: 0.875rem;
+      color: var(--foreground);
+    }
+
+    .output-item span {
+      font-size: 0.875rem;
+      color: var(--muted-foreground);
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem 0;
+    }
+
+    .footer-content {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .footer-content img {
+      height: 2rem;
+      width: auto;
+    }
+
+    .footer-text {
+      text-align: right;
+    }
+
+    .footer-text p:first-child {
+      color: var(--foreground);
+      font-weight: 500;
+    }
+
+    .footer-text p:last-child {
+      font-size: 0.875rem;
+      color: var(--muted-foreground);
+    }
+
+    /* Back to Top Button */
+    .back-to-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 3rem;
+      height: 3rem;
+      border-radius: 50%;
+      background-color: var(--primary);
+      color: var(--primary-foreground);
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      opacity: 0;
+      transform: translateY(1rem);
+      transition: all 0.3s ease;
+      z-index: 50;
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .back-to-top:hover {
+      background-color: rgba(0, 230, 64, 0.9);
+    }
+
+    .back-to-top svg {
+      width: 1.25rem;
+      height: 1.25rem;
+    }
+
+    /* Print Styles */
+    @media print {
+      body {
+        background: white !important;
+        color: black !important;
+      }
+
+      .no-print {
+        display: none !important;
+      }
+
+      .card,
+      .accordion-item,
+      .alert {
+        border: 1px solid #ccc !important;
+        break-inside: avoid;
+      }
+    }
+
+    /* Responsive */
+    @media (max-width: 640px) {
+      .header-content {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .header-text {
+        text-align: center;
+      }
+
+      .footer-content {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .footer-text {
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <div class="header-content">
+        <img src="assets/logo.svg" alt="Ableton Live .aaf" />
+        <div class="header-text">
+          <h1>AAF to Ableton Live Converter</h1>
+          <p>Documentation & Help</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Navigation -->
+  <div class="container">
+    <nav class="no-print">
+      <a href="#introduction">Introduction</a>
+      <a href="#aaf-limitations">AAF Limitations</a>
+      <a href="#limitations">DAW & NLE Limitations</a>
+      <a href="#export-tips">Export Tips</a>
+      <a href="#media-folder">Media Folder</a>
+      <a href="#troubleshooting">Troubleshooting</a>
+      <a href="#output">Output</a>
+    </nav>
+  </div>
+
+  <!-- Main Content -->
+  <main class="container">
+    <!-- Introduction -->
+    <section id="introduction">
+      <div class="intro-card">
+        <p>
+          <strong>Abletonlive.aaf</strong> converts AAF (Advanced Authoring Format) files
+          from various DAWs & NLEs into Ableton Live projects (.als). This tool preserves audio clips, timing,
+          volume automation, fades, and track structure*.
+        </p>
+        <p class="footnote">*Subject to the limitations of each DAW/NLE's AAF export capabilities.</p>
+      </div>
+    </section>
+
+    <!-- DAW Logos -->
+    <section>
+      <div class="daw-logos">
+        <span>Tested with:</span>
+        <img src="assets/daw-logos/pro-tools.png" alt="Pro Tools" />
+        <img src="assets/daw-logos/davinci-resolve.png" alt="DaVinci Resolve" />
+        <img src="assets/daw-logos/Adobe_Corporate_logo.svg" alt="Adobe" />
+        <img src="assets/daw-logos/logic-pro.png" alt="Logic Pro" />
+        <img src="assets/daw-logos/magix.svg" alt="MAGIX" />
+        <img src="assets/daw-logos/Steinberg.svg" alt="Steinberg" />
+      </div>
+    </section>
+
+    <!-- AAF Format Limitations -->
+    <section id="aaf-limitations">
+      <h2>AAF Format Limitations</h2>
+      <p style="margin-bottom: 1.5rem; color: var(--grey);">
+        The AAF (Advanced Authoring Format) is an industry standard for exchanging audio/video projects between
+        applications. However, it has inherent limitations that apply regardless of which DAW or NLE you're using.
+      </p>
+
+      <div class="card" style="margin-bottom: 2rem; padding: 0; overflow: hidden;">
+        <div class="card-header" style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10" />
+            <path d="M12 16v-4" />
+            <path d="M12 8h.01" />
+          </svg>
+          <h3>What AAF Does NOT Include</h3>
+        </div>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Feature</th>
+                <th>Status</th>
+                <th>Workaround</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="feature">MIDI Data</td>
+                <td class="limitation">AAF does not support MIDI tracks - audio only</td>
+                <td class="workaround">Bounce MIDI to audio before export, or export MIDI separately</td>
+              </tr>
+              <tr>
+                <td class="feature">Plugins / VST / AU</td>
+                <td class="limitation">Plugin settings and effect chains are not stored in AAF</td>
+                <td class="workaround">Save plugin presets separately and re-apply in destination DAW</td>
+              </tr>
+              <tr>
+                <td class="feature">Tempo Map</td>
+                <td class="limitation">AAF format does not store tempo information</td>
+                <td class="workaround">Export a MIDI file alongside AAF to transfer tempo changes</td>
+              </tr>
+              <tr>
+                <td class="feature">Time Signature</td>
+                <td class="limitation">AAF format does not store time signature changes</td>
+                <td class="workaround">Export a MIDI file alongside AAF to transfer time signatures</td>
+              </tr>
+              <tr>
+                <td class="feature">Pan Automation</td>
+                <td class="limitation">Only Nuendo reliably exports pan automation - most DAWs don't</td>
+                <td class="workaround">Static pan may work; recreate automation manually if needed</td>
+              </tr>
+              <tr>
+                <td class="feature">Markers</td>
+                <td class="limitation">Marker support is inconsistent across DAWs</td>
+                <td class="workaround">Export markers as text file or create manually in Ableton</td>
+              </tr>
+              <tr>
+                <td class="feature">Track Colors</td>
+                <td class="limitation">Track color assignments are rarely preserved</td>
+                <td class="workaround">Set track colors manually in Ableton after conversion</td>
+              </tr>
+              <tr>
+                <td class="feature">Sends / Routing</td>
+                <td class="limitation">Bus routing and send configurations are not in AAF</td>
+                <td class="workaround">Recreate routing structure in Ableton manually</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card" style="margin-bottom: 2rem; padding: 0; overflow: hidden;">
+        <div class="card-header" style="background: linear-gradient(135deg, #0f3d3e 0%, #1a5653 100%);">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="#00E837" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+            <polyline points="22 4 12 14.01 9 11.01" />
+          </svg>
+          <h3>What AAF DOES Include</h3>
+        </div>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Feature</th>
+                <th>Support Level</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="feature">Audio Files</td>
+                <td style="color: #00E837;">Excellent - embedded or linked</td>
+              </tr>
+              <tr>
+                <td class="feature">Track Layout</td>
+                <td style="color: #00E837;">Excellent - track names and order</td>
+              </tr>
+              <tr>
+                <td class="feature">Clip Positions</td>
+                <td style="color: #00E837;">Excellent - sample-accurate timing</td>
+              </tr>
+              <tr>
+                <td class="feature">Clip Gain</td>
+                <td style="color: #00E837;">Good - per-clip volume (most DAWs)</td>
+              </tr>
+              <tr>
+                <td class="feature">Volume Automation</td>
+                <td style="color: #FFAA00;">Good - varies by DAW (see below)</td>
+              </tr>
+              <tr>
+                <td class="feature">Fades / Crossfades</td>
+                <td style="color: #00E837;">Good - duration preserved, curves may vary</td>
+              </tr>
+              <tr>
+                <td class="feature">Static Pan</td>
+                <td style="color: #FFAA00;">Partial - inconsistent across DAWs</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- DAW-Specific Limitations -->
+    <section id="limitations">
+      <h2>DAW & NLE-Specific Limitations</h2>
+
+      <!-- Pro Tools -->
+      <div class="card" style="margin-bottom: 2rem; padding: 0; overflow: hidden;">
+        <div class="card-header">
+          <img src="assets/daw-logos/pro-tools.png" alt="Pro Tools" />
+          <h3>Pro Tools (Avid)</h3>
+        </div>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Feature</th>
+                <th>Limitation</th>
+                <th>Workaround</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="feature">Track Faders</td>
+                <td class="limitation">Pro Tools only exports fader automation when "Enforce Media Composer
+                  Compatibility" is disabled</td>
+                <td class="workaround">Disable "Enforce Media Composer Compatibility" in export settings</td>
+              </tr>
+              <tr>
+                <td class="feature">Clip Gain</td>
+                <td class="limitation">Pro Tools only exports clip gain when "Enforce Media Composer Compatibility" is
+                  enabled</td>
+                <td class="workaround">Enable "Enforce Media Composer Compatibility" in export settings</td>
+              </tr>
+              <tr>
+                <td class="feature">Clip Gain Range</td>
+                <td class="limitation">Pro Tools clip gain values above +12dB are not exported to AAF</td>
+                <td class="workaround">Bounce clips that need gain above +12dB before export</td>
+              </tr>
+              <tr>
+                <td class="feature">Markers</td>
+                <td class="limitation">Avid Pro Tools does not include session markers in AAF exports</td>
+                <td class="workaround">Document markers separately or export as EDL</td>
+              </tr>
+              <tr>
+                <td class="feature">Pan Automation</td>
+                <td class="limitation">Pan automation is not reliably exported by Pro Tools to AAF format</td>
+                <td class="workaround">Bounce panned stems or recreate panning in Ableton</td>
+              </tr>
+              <tr>
+                <td class="feature">Plugins/Effects</td>
+                <td class="limitation">Plugin settings and effects are not part of the AAF specification</td>
+                <td class="workaround">Bounce tracks with effects applied, or document plugin settings</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- DaVinci Resolve -->
+      <div class="card" style="margin-bottom: 2rem; padding: 0; overflow: hidden;">
+        <div class="card-header">
+          <img src="assets/daw-logos/davinci-resolve.png" alt="DaVinci Resolve" />
+          <h3>DaVinci Resolve (Blackmagic Design)</h3>
+        </div>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Feature</th>
+                <th>Limitation</th>
+                <th>Workaround</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="feature">Volume Automation</td>
+                <td class="limitation">DaVinci Resolve has a known bug where volume automation is not written to AAF
+                  files</td>
+                <td class="workaround">Apply volume automation curves manually in Ableton</td>
+              </tr>
+              <tr>
+                <td class="feature">Track Faders</td>
+                <td class="limitation">DaVinci Resolve does not export static track fader levels to AAF</td>
+                <td class="workaround">Set track levels manually in Ableton after conversion</td>
+              </tr>
+              <tr>
+                <td class="feature">Pan Settings</td>
+                <td class="limitation">DaVinci Resolve does not export pan settings to AAF format</td>
+                <td class="workaround">Apply panning manually in Ableton after conversion</td>
+              </tr>
+              <tr>
+                <td class="feature">MXF Audio Files</td>
+                <td class="limitation">Ableton Live does not support MXF audio format - only WAV and AIFF are supported
+                </td>
+                <td class="workaround">Export audio as WAV format before creating the AAF</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Logic Pro -->
+      <div class="card" style="margin-bottom: 2rem; padding: 0; overflow: hidden;">
+        <div class="card-header">
+          <img src="assets/daw-logos/logic-pro.png" alt="Logic Pro" />
+          <h3>Logic Pro (Apple)</h3>
+        </div>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Feature</th>
+                <th>Limitation</th>
+                <th>Workaround</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="feature">Fades/Crossfades</td>
+                <td class="limitation">Apple Logic Pro does not include fade information in AAF exports</td>
+                <td class="workaround">Use "Bounce in Place" to consolidate clips with fades before export</td>
+              </tr>
+              <tr>
+                <td class="feature">Static Fader Levels</td>
+                <td class="limitation">Logic Pro does not export track fader positions to AAF</td>
+                <td class="workaround">Note fader positions before export and recreate in Ableton</td>
+              </tr>
+              <tr>
+                <td class="feature">Markers</td>
+                <td class="limitation">Logic Pro does not export markers or locators to AAF format</td>
+                <td class="workaround">Export marker list separately as a text file</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Sequoia / Samplitude -->
+      <div class="card" style="margin-bottom: 2rem; padding: 0; overflow: hidden;">
+        <div class="card-header">
+          <img src="assets/daw-logos/magix.svg" alt="MAGIX" style="height: 1.5rem;" />
+          <h3>Sequoia / Samplitude (MAGIX)</h3>
+        </div>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Feature</th>
+                <th>Limitation</th>
+                <th>Workaround</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="feature">Mono Export</td>
+                <td class="limitation">This converter requires stereo interleaved audio - mono AAF exports are not
+                  supported</td>
+                <td class="workaround">Export as stereo interleaved format in Sequoia</td>
+              </tr>
+              <tr>
+                <td class="feature">Split Stereo Pan</td>
+                <td class="limitation">Sequoia's split stereo panning mode is not exported to AAF</td>
+                <td class="workaround">Use standard stereo panning before export</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Nuendo / Cubase -->
+      <div class="card" style="margin-bottom: 2rem; padding: 0; overflow: hidden;">
+        <div class="card-header">
+          <img src="assets/daw-logos/Steinberg.svg" alt="Steinberg" style="height: 1.5rem;" />
+          <h3>Nuendo / Cubase (Steinberg)</h3>
+        </div>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Feature</th>
+                <th>Limitation</th>
+                <th>Workaround</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="feature">Track Faders</td>
+                <td class="limitation">Cubase/Nuendo does not export static track fader positions to AAF</td>
+                <td class="workaround">Draw volume automation instead, which IS exported</td>
+              </tr>
+              <tr>
+                <td class="feature">Pan Settings</td>
+                <td class="limitation">Pan positions and pan automation are not exported to AAF format</td>
+                <td class="workaround">Set panning manually in Ableton after conversion</td>
+              </tr>
+              <tr>
+                <td class="feature">Markers</td>
+                <td class="limitation">Cubase/Nuendo markers and locators are not included in AAF exports</td>
+                <td class="workaround">Export marker list separately or note positions manually</td>
+              </tr>
+              <tr>
+                <td class="feature">Stereo Tracks</td>
+                <td class="limitation">Stereo tracks are exported as consecutive mono channels with identical names</td>
+                <td class="workaround">Converter auto-detects and applies L/R panning</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Adobe Premiere Pro -->
+      <div class="card" style="margin-bottom: 2rem; padding: 0; overflow: hidden;">
+        <div class="card-header">
+          <img src="assets/daw-logos/Adobe_Corporate_logo.svg" alt="Adobe" style="height: 1.5rem;" />
+          <h3>Premiere Pro (Adobe)</h3>
+        </div>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Feature</th>
+                <th>Limitation</th>
+                <th>Workaround</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="feature">Custom Fades</td>
+                <td class="limitation">Custom fade curves (exponential, S-curve) are converted to linear fades during
+                  AAF export</td>
+                <td class="workaround">Recreate custom curves in Ableton if needed</td>
+              </tr>
+              <tr>
+                <td class="feature">Track Faders</td>
+                <td class="limitation">Static track fader positions are not exported to AAF</td>
+                <td class="workaround">Use clip gain or draw volume automation instead</td>
+              </tr>
+              <tr>
+                <td class="feature">Pan Settings</td>
+                <td class="limitation">Pan positions are not exported to AAF format</td>
+                <td class="workaround">Set panning manually in Ableton after conversion</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Export Tips -->
+    <section id="export-tips">
+      <h2>Export Tips by DAW & NLE</h2>
+      <div class="accordion">
+        <!-- Pro Tools -->
+        <div class="accordion-item">
+          <button class="accordion-trigger" onclick="toggleAccordion(this)">
+            <div class="trigger-content">
+              <img src="assets/daw-logos/pro-tools.png" alt="Pro Tools" />
+              <span>Pro Tools</span>
+            </div>
+            <svg class="chevron" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m6 9 6 6 6-6" />
+            </svg>
+          </button>
+          <div class="accordion-content">
+            <ol>
+              <li><span class="step-number">1</span><span>File > Export > Export Session as AAF/OMF</span></li>
+              <li><span class="step-number">2</span><span>Format: AAF</span></li>
+              <li><span class="step-number">3</span><span>Audio Format: Embedded (or Copy if you need separate
+                  files)</span></li>
+              <li><span class="step-number">4</span><span>Sample Rate: Match your session</span></li>
+              <li><span class="step-number">5</span><span>Bit Depth: Match your session (24-bit recommended)</span></li>
+              <li class="important"><span class="step-number">6</span><span>The "Enforce Media Composer Compatibility"
+                  toggle affects which features are exported</span></li>
+            </ol>
+          </div>
+        </div>
+
+        <!-- DaVinci Resolve -->
+        <div class="accordion-item">
+          <button class="accordion-trigger" onclick="toggleAccordion(this)">
+            <div class="trigger-content">
+              <img src="assets/daw-logos/davinci-resolve.png" alt="DaVinci Resolve" />
+              <span>DaVinci Resolve</span>
+            </div>
+            <svg class="chevron" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m6 9 6 6 6-6" />
+            </svg>
+          </button>
+          <div class="accordion-content">
+            <ol>
+              <li><span class="step-number">1</span><span>Go to the Deliver page (rocket icon at bottom)</span></li>
+              <li><span class="step-number">2</span><span>Select the "Pro Tools" preset in Render Settings</span></li>
+              <li><span class="step-number">3</span><span>Video tab: Uncheck "Export Video"</span></li>
+              <li><span class="step-number">4</span><span>Audio tab: Check "Export Audio"</span></li>
+              <li><span class="step-number">5</span><span>Format: Wave, Codec: Linear PCM, Bit Depth: 24-bit</span></li>
+              <li><span class="step-number">6</span><span>Enable "Embedded AAF file" for portable projects</span></li>
+              <li><span class="step-number">7</span><span>Add to Render Queue and Start Render</span></li>
+              <li class="warning">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3" />
+                  <path d="M12 9v4" />
+                  <path d="M12 17h.01" />
+                </svg>
+                <span>DaVinci Resolve has a bug where volume automation is not exported to AAF</span>
+              </li>
+            </ol>
+          </div>
+        </div>
+
+        <!-- Logic Pro -->
+        <div class="accordion-item">
+          <button class="accordion-trigger" onclick="toggleAccordion(this)">
+            <div class="trigger-content">
+              <img src="assets/daw-logos/logic-pro.png" alt="Logic Pro" />
+              <span>Logic Pro</span>
+            </div>
+            <svg class="chevron" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m6 9 6 6 6-6" />
+            </svg>
+          </button>
+          <div class="accordion-content">
+            <ol>
+              <li><span class="step-number">1</span><span>File > Export > Project to AAF File</span></li>
+              <li><span class="step-number">2</span><span>Sample Rate: Match your project</span></li>
+              <li><span class="step-number">3</span><span>Audio Bit Depth: 24-bit recommended</span></li>
+              <li class="important"><span class="step-number">4</span><span>Logic Pro does not export fades or
+                  crossfades to AAF. Use "Bounce in Place" on clips with fades to preserve them before export.</span>
+              </li>
+            </ol>
+          </div>
+        </div>
+
+        <!-- Sequoia / Samplitude -->
+        <div class="accordion-item">
+          <button class="accordion-trigger" onclick="toggleAccordion(this)">
+            <div class="trigger-content">
+              <img src="assets/daw-logos/magix.svg" alt="MAGIX" />
+              <span>Sequoia / Samplitude</span>
+            </div>
+            <svg class="chevron" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m6 9 6 6 6-6" />
+            </svg>
+          </button>
+          <div class="accordion-content">
+            <ol>
+              <li><span class="step-number">1</span><span>File > Export AAF</span></li>
+              <li><span class="step-number">2</span><span>Use stereo interleaved format (mono not supported)</span></li>
+              <li><span class="step-number">3</span><span>Embed audio files for portable projects</span></li>
+            </ol>
+          </div>
+        </div>
+
+        <!-- Nuendo / Cubase -->
+        <div class="accordion-item">
+          <button class="accordion-trigger" onclick="toggleAccordion(this)">
+            <div class="trigger-content">
+              <img src="assets/daw-logos/Steinberg.svg" alt="Steinberg" />
+              <span>Nuendo / Cubase</span>
+            </div>
+            <svg class="chevron" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m6 9 6 6 6-6" />
+            </svg>
+          </button>
+          <div class="accordion-content">
+            <ol>
+              <li><span class="step-number">1</span><span>File > Export > AAF</span></li>
+              <li><span class="step-number">2</span><span>Select audio tracks to export</span></li>
+              <li><span class="step-number">3</span><span>Check "Copy Media" to include audio files</span></li>
+              <li><span class="step-number">4</span><span>Choose "Export All to One File" for embedded audio
+                  (recommended)</span></li>
+              <li><span class="step-number">5</span><span>Uncheck "Quantize Events to Frames" for sample-accurate
+                  timing</span></li>
+              <li><span class="step-number">6</span><span>Bit Depth: 24-bit recommended</span></li>
+              <li class="important"><span class="step-number">7</span><span>Volume automation IS exported - draw
+                  automation for any level changes you need</span></li>
+              <li class="warning">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3" />
+                  <path d="M12 9v4" />
+                  <path d="M12 17h.01" />
+                </svg>
+                <span>Track fader positions, pan, and markers are NOT exported to AAF</span>
+              </li>
+            </ol>
+          </div>
+        </div>
+
+        <!-- Adobe Premiere Pro -->
+        <div class="accordion-item">
+          <button class="accordion-trigger" onclick="toggleAccordion(this)">
+            <div class="trigger-content">
+              <img src="assets/daw-logos/Adobe_Corporate_logo.svg" alt="Adobe" />
+              <span>Premiere Pro</span>
+            </div>
+            <svg class="chevron" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m6 9 6 6 6-6" />
+            </svg>
+          </button>
+          <div class="accordion-content">
+            <ol>
+              <li><span class="step-number">1</span><span>File > Export > AAF</span></li>
+              <li><span class="step-number">2</span><span>Select audio tracks to include</span></li>
+              <li><span class="step-number">3</span><span>Choose "Embed Audio" for portable projects</span></li>
+              <li><span class="step-number">4</span><span>Audio Format: 48kHz, 24-bit recommended</span></li>
+              <li class="important"><span class="step-number">5</span><span>Fades and crossfades ARE exported (as linear
+                  fades)</span></li>
+              <li class="warning">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3" />
+                  <path d="M12 9v4" />
+                  <path d="M12 17h.01" />
+                </svg>
+                <span>Custom fade curves are converted to linear - only shape is lost, timing is preserved</span>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Media Folder -->
+    <section id="media-folder">
+      <h2>Media Folder</h2>
+      <div class="card">
+        <div class="info-section">
+          <div class="icon-wrapper">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path
+                d="m6 14 1.5-2.9A2 2 0 0 1 9.24 10H20a2 2 0 0 1 1.94 2.5l-1.54 6a2 2 0 0 1-1.95 1.5H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H18a2 2 0 0 1 2 2v2" />
+            </svg>
+          </div>
+          <div>
+            <p style="color: var(--muted-foreground);">When specifying a media folder:</p>
+            <ul>
+              <li>The converter will search this folder for any audio files referenced in the AAF</li>
+              <li>Useful when AAF references external files that aren't embedded</li>
+              <li>Subdirectories are searched automatically</li>
+              <li>Leave blank if all audio is embedded in the AAF</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Troubleshooting -->
+    <section id="troubleshooting">
+      <h2>Troubleshooting</h2>
+
+      <div class="alert error" style="margin-bottom: 1rem;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10" />
+          <path d="M12 8v4" />
+          <path d="M12 16h.01" />
+        </svg>
+        <div>
+          <h4>Missing Audio Files</h4>
+          <ul>
+            <li>Check if the AAF has embedded audio (file size should be larger)</li>
+            <li>Specify the correct media folder path</li>
+            <li>Ensure referenced audio files exist and are in WAV/AIFF format</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="alert warning" style="margin-bottom: 1rem;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3" />
+          <path d="M12 9v4" />
+          <path d="M12 17h.01" />
+        </svg>
+        <div>
+          <h4>Tempo/Timing Issues</h4>
+          <ul>
+            <li>The converter creates a fixed-tempo Ableton project</li>
+            <li>Tempo maps and tempo automation are not transferred</li>
+            <li>For variable tempo projects, note the tempo changes before conversion</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="alert tip">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path
+            d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5" />
+          <path d="M9 18h6" />
+          <path d="M10 22h4" />
+        </svg>
+        <div>
+          <h4>Large Projects</h4>
+          <ul>
+            <li>Large AAF files may take several minutes to process</li>
+            <li>Progress is shown in the console</li>
+            <li>Ensure sufficient disk space for extracted audio</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Output -->
+    <section id="output">
+      <h2>Output</h2>
+      <div class="card">
+        <p style="color: var(--muted-foreground); margin-bottom: 1rem;">The converter creates:</p>
+        <div class="output-item">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17.5 22h.5a2 2 0 0 0 2-2V7l-5-5H6a2 2 0 0 0-2 2v3" />
+            <path d="M14 2v4a2 2 0 0 0 2 2h4" />
+            <path d="M2 19a2 2 0 1 1 4 0v1a2 2 0 1 1-4 0v-4a2 2 0 1 1 4 0" />
+            <path d="M10 20h2a2 2 0 1 0 0-4h-2v6" />
+          </svg>
+          <code>ProjectName.als</code>
+          <span>— The Ableton Live project file</span>
+        </div>
+        <div class="output-item">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path
+              d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z" />
+          </svg>
+          <code>Samples/</code>
+          <span>— All extracted audio files</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <img src="assets/logo.svg" alt="Ableton Live .aaf" />
+        <div class="footer-text">
+          <p>Universal AAF to Ableton Live Converter</p>
+          <p>Version 1.0.0</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button class="back-to-top no-print" onclick="scrollToTop()" aria-label="Back to top">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="m18 15-6-6-6 6" />
+    </svg>
+  </button>
+
+  <script>
+    // Accordion toggle
+    function toggleAccordion(button) {
+      const item = button.closest('.accordion-item');
+      const isOpen = item.classList.contains('open');
+
+      // Close all accordion items
+      document.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('open'));
+
+      // Toggle current item
+      if (!isOpen) {
+        item.classList.add('open');
+      }
+    }
+
+    // Back to top functionality
+    const backToTopBtn = document.querySelector('.back-to-top');
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTopBtn.classList.add('visible');
+      } else {
+        backToTopBtn.classList.remove('visible');
+      }
+    });
+
+    function scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+  </script>
+</body>
+
+</html>

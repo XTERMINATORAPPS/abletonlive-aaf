@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import DAWSection from "@/components/DAWSection";
@@ -9,10 +10,15 @@ import BugReportSection from "@/components/BugReportSection";
 import Footer from "@/components/Footer";
 
 const Index = () => {
+  const [isGumroadModalOpen, setIsGumroadModalOpen] = useState(false);
+
   return (
     <main className="min-h-screen bg-background text-foreground">
-      <Navbar />
-      <HeroSection />
+      <Navbar onBuyNowClick={() => setIsGumroadModalOpen(true)} />
+      <HeroSection
+        isGumroadModalOpen={isGumroadModalOpen}
+        setIsGumroadModalOpen={setIsGumroadModalOpen}
+      />
       <HowItWorksSection />
       <DAWSection />
       <DemoSection />
