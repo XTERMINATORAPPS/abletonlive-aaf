@@ -3,6 +3,23 @@ import { Download, Check, Zap } from "lucide-react";
 import productImage from "../assets/gui.png";
 import arrowImage from "../assets/arrow.png";
 
+// Google Analytics tracking
+declare global {
+  interface Window {
+    gtag?: (...args: any[]) => void;
+  }
+}
+
+const trackDownload = (platform: string, version: string) => {
+  if (window.gtag) {
+    window.gtag('event', 'download', {
+      event_category: 'Downloads',
+      event_label: platform,
+      value: version,
+    });
+  }
+};
+
 const WindowsIcon = ({ className }: { className?: string }) => (
   <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
     <path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801" />
@@ -200,6 +217,7 @@ const HeroSection = ({ isGumroadModalOpen, setIsGumroadModalOpen }: HeroSectionP
                       key={p.key}
                       href={downloadUrl}
                       download
+                      onClick={() => trackDownload('Windows', versionInfo?.version || 'unknown')}
                       onMouseEnter={() => setHoveredCard(p.key)}
                       onMouseLeave={() => setHoveredCard(null)}
                       className={cardClasses}
@@ -362,6 +380,7 @@ const HeroSection = ({ isGumroadModalOpen, setIsGumroadModalOpen }: HeroSectionP
               <a
                 href={getDownloadUrl("macos")}
                 download
+                onClick={() => trackDownload('macOS', versionInfo?.version || 'unknown')}
                 className="btn-primary w-full inline-flex items-center justify-center gap-2 mb-6"
               >
                 <Download className="w-5 h-5" />
