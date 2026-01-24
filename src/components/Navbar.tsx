@@ -21,6 +21,7 @@ const Navbar = ({ onBuyNowClick }: NavbarProps) => {
   const navLinks = [
     { href: "#features", label: "Features" },
     { href: "#pricing", label: "Pricing" },
+    { href: "#faq", label: "FAQ" },
     { href: "/help/index.html", label: "Documentation" },
     { href: "#bug-report", label: "Bug Report" },
   ];

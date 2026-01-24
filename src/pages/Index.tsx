@@ -6,6 +6,7 @@ import DemoSection from "@/components/DemoSection";
 import FeaturesSection from "@/components/FeaturesSection";
 import HowItWorksSection from "@/components/HowItWorksSection";
 import PricingSection from "@/components/PricingSection";
+import FAQSection from "@/components/FAQSection";
 import BugReportSection from "@/components/BugReportSection";
 import Footer from "@/components/Footer";
 
@@ -24,6 +25,7 @@ const Index = () => {
       <DemoSection />
       <PricingSection />
       <FeaturesSection />
+      <FAQSection />
       <BugReportSection />
       <Footer />
     </main>

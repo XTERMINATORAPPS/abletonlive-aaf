@@ -1,0 +1,30 @@
+{
+    "name": "Abletonlive.aaf",
+    "short_name": "Abletonlive.aaf",
+    "description": "Convert AAF files to Ableton Live projects. Transfer from Pro Tools, DaVinci Resolve, Logic Pro and more.",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#141414",
+    "theme_color": "#00E640",
+    "orientation": "portrait-primary",
+    "icons": [
+        {
+            "src": "/favicon.ico",
+            "sizes": "48x48",
+            "type": "image/x-icon"
+        },
+        {
+            "src": "/app-icon.svg",
+            "sizes": "any",
+            "type": "image/svg+xml",
+            "purpose": "any maskable"
+        }
+    ],
+    "categories": [
+        "multimedia",
+        "music",
+        "productivity"
+    ],
+    "lang": "en",
+    "dir": "ltr"
+}
