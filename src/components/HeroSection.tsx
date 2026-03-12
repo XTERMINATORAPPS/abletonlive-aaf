@@ -62,7 +62,7 @@ const VERSION_JSON_URL = `${R2_BASE_URL}/version.json`;
 
 interface VersionInfo {
   version: string;
-  release_notes: string[];
+  release_notes: string | string[];
   windows_url: string;
   macos_intel_url: string;
   macos_arm_url: string;
@@ -255,7 +255,10 @@ const HeroSection = ({ isGumroadModalOpen, setIsGumroadModalOpen }: HeroSectionP
                 <div className="text-sm text-muted-foreground mt-2">
                   <span className="font-medium">v{versionInfo.version}</span>
                   <ul className="list-disc list-inside mt-1 space-y-0.5">
-                    {versionInfo.release_notes.map((note, i) => (
+                    {(Array.isArray(versionInfo.release_notes)
+                      ? versionInfo.release_notes
+                      : (versionInfo.release_notes as string).split('\n').map(l => l.replace(/^-\s*/, '')).filter(Boolean)
+                    ).map((note, i) => (
                       <li key={i}>{note}</li>
                     ))}
                   </ul>
