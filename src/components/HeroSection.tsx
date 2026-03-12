@@ -62,7 +62,7 @@ const VERSION_JSON_URL = `${R2_BASE_URL}/version.json`;
 
 interface VersionInfo {
   version: string;
-  release_notes: string;
+  release_notes: string[];
   windows_url: string;
   macos_intel_url: string;
   macos_arm_url: string;
@@ -253,7 +253,12 @@ const HeroSection = ({ isGumroadModalOpen, setIsGumroadModalOpen }: HeroSectionP
               </div>
               {versionInfo && (
                 <div className="text-sm text-muted-foreground mt-2">
-                  <span className="font-medium">v{versionInfo.version}</span> - {versionInfo.release_notes}
+                  <span className="font-medium">v{versionInfo.version}</span>
+                  <ul className="list-disc list-inside mt-1 space-y-0.5">
+                    {versionInfo.release_notes.map((note, i) => (
+                      <li key={i}>{note}</li>
+                    ))}
+                  </ul>
                 </div>
               )}
               <p className="text-xs text-muted-foreground mt-2">*Free trial includes ONLY 5 conversions <br /> After the trial expires you need to buy a lifetime license that includes lifetime free updates.</p>
