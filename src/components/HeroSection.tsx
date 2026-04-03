@@ -317,7 +317,7 @@ const HeroSection = ({ isGumroadModalOpen, setIsGumroadModalOpen }: HeroSectionP
 
               <div className="mb-6">
                 <div className="text-5xl font-bold text-foreground mb-2">
-                  $50
+                  $59.99
                 </div>
                 <p className="text-muted-foreground">one-time payment</p>
               </div>
