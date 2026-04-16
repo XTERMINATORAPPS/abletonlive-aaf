@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import logo from "../assets/logo.svg";
 
 interface NavbarProps {
@@ -9,6 +10,11 @@ interface NavbarProps {
 const Navbar = ({ onBuyNowClick }: NavbarProps) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const isHomePage = location.pathname === "/";
+  const gumroadUrl = "https://xterminatorapps.gumroad.com/l/abletonliveaaf";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,9 +28,35 @@ const Navbar = ({ onBuyNowClick }: NavbarProps) => {
     { href: "#features", label: "Features" },
     { href: "#pricing", label: "Pricing" },
     { href: "#faq", label: "FAQ" },
+    { href: "/blog", label: "Blog" },
     { href: "/help/index.html", label: "Documentation" },
     { href: "#bug-report", label: "Bug Report" },
   ];
+
+  const handleNavClick = (e: React.MouseEvent, href: string) => {
+    if (href.startsWith("#")) {
+      e.preventDefault();
+      if (isHomePage) {
+        // On homepage: scroll to the section
+        const el = document.querySelector(href);
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth" });
+        }
+      } else {
+        // On other pages: navigate home, then scroll after load
+        navigate("/" + href);
+      }
+      setIsMobileMenuOpen(false);
+    } else if (href.startsWith("/") && !href.startsWith("/help")) {
+      // Internal React routes (e.g. /blog)
+      e.preventDefault();
+      navigate(href);
+      setIsMobileMenuOpen(false);
+    } else {
+      // External or /help links: let the browser handle it
+      setIsMobileMenuOpen(false);
+    }
+  };
 
   return (
     <nav
@@ -35,26 +67,27 @@ const Navbar = ({ onBuyNowClick }: NavbarProps) => {
     >
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
-          <a href="#" className="flex items-center">
+          <Link to="/" className="flex items-center">
             <img src={logo} alt="Abletonlive.aaf" className="h-8" />
-          </a>
+          </Link>
 
           <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
+                onClick={(e) => handleNavClick(e, link.href)}
                 className="text-muted-foreground hover:text-foreground transition-colors duration-200"
               >
                 {link.label}
               </a>
             ))}
-            <button
-              onClick={onBuyNowClick}
+            <a
+              href={gumroadUrl}
               className="bg-primary text-primary-foreground font-semibold px-6 py-2 rounded-lg transition-all duration-300 hover:brightness-110"
             >
               Buy Now
-            </button>
+            </a>
           </div>
 
           <button
@@ -74,20 +107,18 @@ const Navbar = ({ onBuyNowClick }: NavbarProps) => {
                   key={link.href}
                   href={link.href}
                   className="text-muted-foreground hover:text-foreground transition-colors duration-200 py-2"
-                  onClick={() => setIsMobileMenuOpen(false)}
+                  onClick={(e) => handleNavClick(e, link.href)}
                 >
                   {link.label}
                 </a>
               ))}
-              <button
-                onClick={() => {
-                  onBuyNowClick();
-                  setIsMobileMenuOpen(false);
-                }}
+              <a
+                href={gumroadUrl}
+                onClick={() => setIsMobileMenuOpen(false)}
                 className="bg-primary text-primary-foreground font-semibold px-6 py-2 rounded-lg text-center"
               >
                 Buy Now
-              </button>
+              </a>
             </div>
           </div>
         )}

@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import DAWSection from "@/components/DAWSection";
@@ -12,6 +13,18 @@ import Footer from "@/components/Footer";
 
 const Index = () => {
   const [isGumroadModalOpen, setIsGumroadModalOpen] = useState(false);
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash) {
+      const el = document.querySelector(location.hash);
+      if (el) {
+        setTimeout(() => {
+          el.scrollIntoView({ behavior: "smooth" });
+        }, 100);
+      }
+    }
+  }, [location.hash]);
 
   return (
     <main className="min-h-screen bg-background text-foreground">

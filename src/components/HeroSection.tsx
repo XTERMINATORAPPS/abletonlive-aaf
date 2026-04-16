@@ -233,8 +233,8 @@ const HeroSection = ({ isGumroadModalOpen, setIsGumroadModalOpen }: HeroSectionP
                 </div>
 
                 {/* Gumroad License Card */}
-                <button
-                  onClick={() => setIsGumroadModalOpen(true)}
+                <a
+                  href="https://xterminatorapps.gumroad.com/l/abletonliveaaf"
                   onMouseEnter={() => setHoveredCard('gumroad')}
                   onMouseLeave={() => setHoveredCard(null)}
                   className={`flex flex-col items-center gap-3 p-5 min-h-[180px] min-w-[150px] rounded-xl border transition-all cursor-pointer hover:scale-105 ${hoveredCard === 'gumroad'
@@ -249,7 +249,7 @@ const HeroSection = ({ isGumroadModalOpen, setIsGumroadModalOpen }: HeroSectionP
                     <p className={`text-sm font-medium ${hoveredCard === 'gumroad' ? "text-primary" : "text-foreground"}`}>Buy Lifetime <br /> License</p>
                   </div>
                   <p className={`text-xs mt-1 text-center ${hoveredCard === 'gumroad' ? "text-primary/70" : "text-foreground"}`}>Secure checkout <br />powered by Gumroad</p>
-                </button>
+                </a>
               </div>
               {versionInfo && (
                 <div className="text-sm text-muted-foreground mt-2">

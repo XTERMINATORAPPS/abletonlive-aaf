@@ -19,6 +19,23 @@
     gtag('config', 'G-0MVP50JJ9L');
   </script>
 
+  <!-- Gumroad Overlay Checkout -->
+  <script src="https://gumroad.com/js/gumroad.js"></script>
+
+  <!-- SPA GitHub Pages redirect handler -->
+  <script>
+    (function(l) {
+      if (l.search[1] === '/' ) {
+        var decoded = l.search.slice(1).split('&').map(function(s) {
+          return s.replace(/~and~/g, '&')
+        }).join('?');
+        window.history.replaceState(null, null,
+          l.pathname.slice(0, -1) + decoded + l.hash
+        );
+      }
+    }(window.location))
+  </script>
+
   <title>Abletonlive.aaf - Convert AAF to Ableton Live in Seconds</title>
   <meta name="description"
     content="Seamlessly transfer your projects from Pro Tools, DaVinci Resolve, Logic Pro, and more to Ableton Live. Preserve audio clips, fades, automation, and track structure." />
@@ -82,7 +99,7 @@
         "operatingSystem": "Windows, macOS",
         "offers": {
           "@type": "Offer",
-          "price": "50",
+          "price": "59.99",
           "priceCurrency": "USD"
         },
         "description": "Convert AAF files from Pro Tools, DaVinci Resolve, Logic Pro to Ableton Live projects. Preserve audio clips, fades, automation, and track structure.",
@@ -216,6 +233,41 @@
         "@type": "Organization",
         "name": "XTERMINATORAPPS"
       }
+    }
+  </script>
+
+  <!-- HowTo Structured Data -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "How to Convert AAF Files to Ableton Live",
+      "description": "Convert AAF files from Pro Tools, DaVinci Resolve, Premiere Pro, and other DAWs to Ableton Live projects in 3 simple steps.",
+      "totalTime": "PT2M",
+      "tool": {
+        "@type": "SoftwareApplication",
+        "name": "Abletonlive.aaf"
+      },
+      "step": [
+        {
+          "@type": "HowToStep",
+          "position": 1,
+          "name": "Select AAF File",
+          "text": "Click Browse or drag and drop your AAF file into the converter. Supports AAF from Pro Tools, DaVinci Resolve, Premiere Pro, Logic Pro, Nuendo, Cubase, and MAGIX."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 2,
+          "name": "Convert",
+          "text": "Click the Convert button. The converter processes your AAF file and creates an Ableton Live project (.als) with a Samples folder containing all extracted audio."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 3,
+          "name": "Open in Ableton Live",
+          "text": "Open the .als file in Ableton Live 10 or later. Your audio clips, fades, volume automation, and track structure are all preserved."
+        }
+      ]
     }
   </script>
 </head>
