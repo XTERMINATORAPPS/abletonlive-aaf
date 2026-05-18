@@ -98,6 +98,7 @@ const HeroSection = ({ isGumroadModalOpen, setIsGumroadModalOpen }: HeroSectionP
   const [versionInfo, setVersionInfo] = useState<VersionInfo | null>(null);
   const [hoveredCard, setHoveredCard] = useState<string | null>(null);
   const [isMacModalOpen, setIsMacModalOpen] = useState(false);
+  const [showAllReleaseNotes, setShowAllReleaseNotes] = useState(false);
 
   useEffect(() => {
     setUserPlatform(detectPlatform());
@@ -255,13 +256,31 @@ const HeroSection = ({ isGumroadModalOpen, setIsGumroadModalOpen }: HeroSectionP
                 <div className="text-sm text-muted-foreground mt-2">
                   <span className="font-medium">v{versionInfo.version}</span>
                   <ul className="list-disc list-inside mt-1 space-y-0.5">
-                    {(Array.isArray(versionInfo.release_notes)
+                    {(() => {
+                      const notes = Array.isArray(versionInfo.release_notes)
                       ? versionInfo.release_notes
-                      : (versionInfo.release_notes as string).split('\n').map(l => l.replace(/^-\s*/, '')).filter(Boolean)
-                    ).map((note, i) => (
-                      <li key={i}>{note}</li>
-                    ))}
+                      : (versionInfo.release_notes as string).split('\n').map(l => l.replace(/^\-\s*/, '')).filter(Boolean);
+                      const visibleNotes = showAllReleaseNotes ? notes : notes.slice(0, 3);
+                      return visibleNotes.map((note, i) => (
+                        <li key={i}>{note}</li>
+                      ));
+                    })()}
                   </ul>
+                  {(() => {
+                    const notes = Array.isArray(versionInfo.release_notes)
+                      ? versionInfo.release_notes
+                      : (versionInfo.release_notes as string).split('\n').map(l => l.replace(/^\-\s*/, '')).filter(Boolean);
+                    if (notes.length <= 3) return null;
+                    return (
+                      <button
+                        type="button"
+                        onClick={() => setShowAllReleaseNotes(!showAllReleaseNotes)}
+                        className="mt-2 text-xs font-medium text-primary hover:text-primary/80 transition-colors"
+                      >
+                        {showAllReleaseNotes ? 'Show less' : `Show ${notes.length - 3} more`}
+                      </button>
+                    );
+                  })()}
                 </div>
               )}
               <p className="text-xs text-muted-foreground mt-2">*Free trial includes ONLY 5 conversions <br /> After the trial expires you need to buy a lifetime license that includes lifetime free updates.</p>
