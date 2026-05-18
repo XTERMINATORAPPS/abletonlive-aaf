@@ -291,7 +291,7 @@ const HeroSection = ({ isGumroadModalOpen, setIsGumroadModalOpen }: HeroSectionP
               <img
                 src={productImage}
                 alt="AAF to Ableton Converter"
-                className="relative rounded-xl shadow-2xl shadow-primary/20 border border-white/10"
+                className="relative rounded-xl shadow-2xl shadow-primary/20 border border-white/10 max-w-sm"
               />
             </div>
           </div>
