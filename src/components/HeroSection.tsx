@@ -178,7 +178,7 @@ const HeroSection = ({ isGumroadModalOpen, setIsGumroadModalOpen }: HeroSectionP
                   // Card is green if: it's being hovered OR (it's current platform AND nothing else is hovered)
                   const isGreen = hoveredCard === p.key || (currentPlatform && !hoveredCard);
 
-                  const cardClasses = `flex flex-col items-center gap-3 p-5 min-h-[180px] min-w-[150px] rounded-xl border transition-all cursor-pointer hover:scale-105 ${isGreen
+                  const cardClasses = `flex flex-col items-center gap-3 p-5 min-h-[120px] min-w-[150px] rounded-xl border transition-all cursor-pointer hover:scale-105 ${isGreen
                     ? "bg-primary/10 border-primary"
                     : "bg-card border-border hover:border-white/30"
                     }`;
@@ -228,7 +228,7 @@ const HeroSection = ({ isGumroadModalOpen, setIsGumroadModalOpen }: HeroSectionP
                 })}
 
                 {/* OR Divider */}
-                <div className="flex items-center justify-center min-h-[180px] mx-4">
+                <div className="flex items-center justify-center min-h-[120px] mx-4">
                   <span className="text-2xl font-bold" style={{ color: 'hsl(0deg 0% 96.08%)' }}>Or</span>
                 </div>
 
@@ -237,7 +237,7 @@ const HeroSection = ({ isGumroadModalOpen, setIsGumroadModalOpen }: HeroSectionP
                   href="https://xterminatorapps.gumroad.com/l/abletonliveaaf"
                   onMouseEnter={() => setHoveredCard('gumroad')}
                   onMouseLeave={() => setHoveredCard(null)}
-                  className={`flex flex-col items-center gap-3 p-5 min-h-[180px] min-w-[150px] rounded-xl border transition-all cursor-pointer hover:scale-105 ${hoveredCard === 'gumroad'
+                  className={`flex flex-col items-center gap-3 p-5 min-h-[120px] min-w-[150px] rounded-xl border transition-all cursor-pointer hover:scale-105 ${hoveredCard === 'gumroad'
                     ? "bg-primary/10 border-primary"
                     : "bg-card border-border hover:border-white/30"
                     }`}
