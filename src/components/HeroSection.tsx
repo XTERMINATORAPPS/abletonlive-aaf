@@ -194,7 +194,6 @@ const HeroSection = ({ isGumroadModalOpen, setIsGumroadModalOpen }: HeroSectionP
                         <p className={`text-sm font-medium ${isGreen ? "text-primary" : "text-foreground"}`}>{p.label}</p>
                         <p className={`text-xs ${isGreen ? "text-primary/70" : "text-muted-foreground"}`}>{p.sublabel}</p>
                       </div>
-                      <p className={`text-xs mt-1 max-w-[120px] text-center break-all ${isGreen ? "text-primary/70" : "text-muted-foreground"}`}>{fileName}</p>
                     </>
                   );
 
@@ -249,7 +248,6 @@ const HeroSection = ({ isGumroadModalOpen, setIsGumroadModalOpen }: HeroSectionP
                   <div className="text-center">
                     <p className={`text-sm font-medium ${hoveredCard === 'gumroad' ? "text-primary" : "text-foreground"}`}>Buy Lifetime <br /> License</p>
                   </div>
-                  <p className={`text-xs mt-1 text-center ${hoveredCard === 'gumroad' ? "text-primary/70" : "text-foreground"}`}>Secure checkout <br />powered by Gumroad</p>
                 </a>
               </div>
               {versionInfo && (
