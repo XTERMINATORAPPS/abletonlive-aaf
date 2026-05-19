@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://abletonliveaaf.shop/</loc>
-    <lastmod>2026-04-16</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -14,10 +14,30 @@
   </url>
   <url>
     <loc>https://abletonliveaaf.shop/blog</loc>
-    <lastmod>2026-04-16</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
+  <!-- v2.0.0 release posts -->
+  <url>
+    <loc>https://abletonliveaaf.shop/blog/abletonlive-aaf-v2-release</loc>
+    <lastmod>2026-05-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://abletonliveaaf.shop/blog/mxf-to-wav-davinci-resolve-ableton</loc>
+    <lastmod>2026-05-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://abletonliveaaf.shop/blog/tempo-time-signature-aaf-ableton</loc>
+    <lastmod>2026-05-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Existing blog posts -->
   <url>
     <loc>https://abletonliveaaf.shop/blog/how-to-convert-aaf-to-ableton-live</loc>
     <lastmod>2026-04-10</lastmod>
@@ -56,9 +76,9 @@
   </url>
   <url>
     <loc>https://abletonliveaaf.shop/blog/aaf-vs-omf-comparison</loc>
-    <lastmod>2026-03-20</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://abletonliveaaf.shop/blog/preserve-fades-automation-aaf</loc>
@@ -80,7 +100,7 @@
   </url>
   <url>
     <loc>https://abletonliveaaf.shop/blog/does-ableton-live-export-aaf-or-omf</loc>
-    <lastmod>2026-04-14</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -92,7 +112,7 @@
   </url>
   <url>
     <loc>https://abletonliveaaf.shop/blog/best-aaf-converter-tools</loc>
-    <lastmod>2026-04-07</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -104,8 +124,8 @@
   </url>
   <url>
     <loc>https://abletonliveaaf.shop/blog/export-markers-media-composer-aaf</loc>
-    <lastmod>2026-03-30</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
 </urlset>

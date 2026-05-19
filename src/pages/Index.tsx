@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
+import AnnouncementMarquee from "@/components/AnnouncementMarquee";
 import DAWSection from "@/components/DAWSection";
 import DemoSection from "@/components/DemoSection";
 import FeaturesSection from "@/components/FeaturesSection";
@@ -33,6 +34,7 @@ const Index = () => {
         isGumroadModalOpen={isGumroadModalOpen}
         setIsGumroadModalOpen={setIsGumroadModalOpen}
       />
+      <AnnouncementMarquee />
       <HowItWorksSection />
       <DAWSection />
       <DemoSection />

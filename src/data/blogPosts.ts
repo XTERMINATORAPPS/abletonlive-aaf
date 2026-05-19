@@ -11,6 +11,230 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "abletonlive-aaf-v2-release",
+    title: "Abletonlive.aaf v2.0.0: Complete UI Redesign and Major New Features",
+    date: "2026-05-19",
+    excerpt: "Version 2.0 is here with a ground-up UI redesign, email-based trial activation, MXF auto-conversion, DaVinci Resolve stereo splitting, BPM/time signature inputs, and conversion history.",
+    readTime: "5 min read",
+    metaDescription: "Abletonlive.aaf v2.0.0 release notes. Complete UI redesign, email trial activation, MXF to WAV conversion, DaVinci Resolve stereo splitting, tempo inputs, and more.",
+    keywords: ["abletonlive.aaf v2", "aaf converter update", "aaf to ableton update", "abletonlive aaf new version"],
+    content: `
+## Abletonlive.aaf v2.0.0 Is Here
+
+We are excited to announce the release of **Abletonlive.aaf v2.0.0** -- the biggest update since the app launched. This version includes a complete UI redesign, a new trial activation system, and several features that solve real pain points our users have reported.
+
+Here is everything that is new.
+
+## Complete UI Redesign
+
+The entire interface has been rebuilt from the ground up. The new design is cleaner, more intuitive, and gives you better visibility into what is happening during conversion. Every screen, button, and panel has been rethought for a smoother workflow.
+
+Key UI improvements include:
+- Cleaner layout with better use of space
+- Improved drag-and-drop file area
+- Real-time conversion progress feedback
+- Footer license status indicator so you always know your activation state
+
+## Email-Based Trial Activation
+
+The trial system has been completely reworked. Instead of a simple counter, v2 uses email-based activation with a 6-digit verification code. This means:
+
+- Your trial is tied to your email, not your machine
+- You get exactly 5 full conversions to evaluate the tool
+- The activation process takes seconds
+- No account creation required -- just enter your email and verify
+
+## Tempo and Time Signature Inputs
+
+One of the most requested features. AAF files do not store tempo or time signature data, which means your Ableton project would always open at the default 120 BPM in 4/4 time.
+
+Now you can set the correct BPM and time signature **before conversion**, and the resulting .als file will have the right tempo from the start. No more manually adjusting after import.
+
+The inputs include inline validation with error feedback so you cannot accidentally enter invalid values.
+
+## MXF to WAV Auto-Conversion
+
+DaVinci Resolve and some NLEs use MXF audio containers internally. Ableton Live cannot read MXF files. Previously, you had to manually convert these to WAV before running the AAF conversion.
+
+**v2 handles this automatically.** The app bundles FFmpeg and converts any MXF audio to WAV on the fly during the conversion process. No extra steps, no manual workarounds.
+
+## DaVinci Resolve Stereo Channel Splitting
+
+DaVinci Resolve exports stereo audio as interleaved stereo clips. Some workflows need these split into separate left and right channels for independent processing in Ableton.
+
+v2 automatically detects Resolve stereo tracks and splits them into discrete L/R tracks in the Ableton project. This gives you full control over each channel in your mix.
+
+## Conversion History
+
+Every conversion you run is now logged with:
+- The source AAF file name
+- The output location
+- A timestamp
+- One-click folder access to jump straight to the output
+
+This makes it easy to find past conversions without digging through your file system.
+
+## Bug Fixes and Reliability
+
+Beyond the headline features, v2 includes numerous bug fixes and reliability improvements across the entire conversion pipeline.
+
+## Upgrade Now
+
+If you already have a lifetime license, v2 is a free update. [Download it now](/) from the website.
+
+If you have not tried Abletonlive.aaf yet, the free trial gives you 5 full conversions to test everything. [Get started](/) today.
+    `
+  },
+  {
+    slug: "mxf-to-wav-davinci-resolve-ableton",
+    title: "MXF to WAV Auto-Conversion: Solving the DaVinci Resolve Audio Problem",
+    date: "2026-05-19",
+    excerpt: "How Abletonlive.aaf v2 automatically converts MXF audio to WAV and splits DaVinci Resolve stereo channels into separate L/R tracks.",
+    readTime: "5 min read",
+    metaDescription: "Learn how Abletonlive.aaf v2 automatically handles MXF to WAV conversion and DaVinci Resolve stereo channel splitting when converting AAF to Ableton Live.",
+    keywords: ["mxf to wav", "davinci resolve mxf", "resolve stereo split", "davinci resolve ableton audio"],
+    content: `
+## The MXF Problem
+
+If you have ever exported an AAF from DaVinci Resolve and tried to open it in Ableton Live, you have probably hit this wall: the audio files are in MXF format, and Ableton cannot read them.
+
+MXF (Material eXchange Format) is a container format used in broadcast and post-production. DaVinci Resolve uses it internally for audio, and when you export an AAF, some or all of the audio clips may be wrapped in MXF containers.
+
+The result? Your conversion fails or produces silent tracks.
+
+## The Old Workaround
+
+Before v2, the solution was manual:
+
+1. Extract audio from the MXF containers using FFmpeg or a similar tool
+2. Convert each file to WAV
+3. Replace the MXF references in the AAF or re-export from Resolve with different settings
+4. Run the conversion again
+
+This was tedious, error-prone, and required command-line knowledge.
+
+## How v2 Solves It
+
+Abletonlive.aaf v2 bundles FFmpeg directly into the application. During conversion, it:
+
+1. Scans all audio references in the AAF file
+2. Detects any MXF-wrapped audio
+3. Automatically extracts and converts to WAV
+4. Uses the converted WAV files in the Ableton project
+
+This happens transparently -- you just drop your AAF file and click Convert. No extra steps.
+
+## DaVinci Resolve Stereo Splitting
+
+There is a second issue specific to Resolve: stereo audio export.
+
+When DaVinci Resolve exports stereo tracks via AAF, it creates interleaved stereo clips. This is technically correct, but it can cause problems in some workflows where you need independent control over left and right channels.
+
+v2 adds automatic stereo channel detection and splitting for Resolve exports:
+
+- Interleaved stereo clips are detected during conversion
+- Each stereo clip is split into separate left (L) and right (R) mono clips
+- These appear as distinct tracks in the Ableton project
+- You get full independent control over each channel
+
+This is especially useful for:
+- **Dual-system recording** where left and right carry different sources (lavelier + boom mic)
+- **Music video projects** where stereo music needs channel-level processing
+- **Podcast recordings** with host on one channel and guest on the other
+
+## Supported Resolve Versions
+
+The MXF auto-conversion and stereo splitting have been tested with:
+- DaVinci Resolve 18.x
+- DaVinci Resolve 19.x
+- Both the free and Studio editions
+- Windows and macOS
+
+## Try It Now
+
+[Download Abletonlive.aaf v2](/) and test with your DaVinci Resolve projects. The free trial includes 5 full conversions.
+    `
+  },
+  {
+    slug: "tempo-time-signature-aaf-ableton",
+    title: "Setting BPM and Time Signature When Converting AAF to Ableton Live",
+    date: "2026-05-19",
+    excerpt: "Abletonlive.aaf v2 lets you set the correct tempo and time signature before conversion, so your Ableton project is ready to work with immediately.",
+    readTime: "4 min read",
+    metaDescription: "How to set BPM and time signature when converting AAF files to Ableton Live. New in Abletonlive.aaf v2 with inline validation and error feedback.",
+    keywords: ["aaf bpm", "aaf tempo", "aaf time signature", "ableton tempo aaf"],
+    content: `
+## The Missing Tempo Problem
+
+AAF files do not store tempo or time signature information. This is a limitation of the AAF specification itself -- it was designed for linear timecode-based workflows, not musical ones.
+
+When you convert an AAF to Ableton Live, the resulting project defaults to 120 BPM in 4/4 time. If your actual project is at 95 BPM in 3/4 time, everything will look wrong on the grid. Clips will not snap correctly, the metronome will be off, and quantization will not work.
+
+## The Old Workflow
+
+Previously, you had to:
+
+1. Convert the AAF to Ableton
+2. Open the project
+3. Manually change the tempo in Ableton
+4. Manually set the time signature
+5. Hope you remembered the right values
+
+If you forgot to note the original tempo before leaving your source DAW, you would have to go back and check.
+
+## How v2 Solves It
+
+Abletonlive.aaf v2 adds tempo and time signature input fields directly in the conversion interface:
+
+### BPM Input
+- Enter any BPM value from 20 to 999
+- Decimal values are supported (e.g., 128.5 BPM)
+- The field validates your input in real time
+- Invalid values show inline error messages
+
+### Time Signature Input
+- Set the numerator (beats per bar) and denominator (beat value)
+- Common signatures like 4/4, 3/4, 6/8, 5/4, and 7/8 are all supported
+- The inputs validate that values are musically valid
+
+### What Happens During Conversion
+
+When you set a BPM and time signature:
+
+1. The converter writes the tempo directly into the .als file header
+2. Ableton reads this on project open
+3. The grid, metronome, and snap settings all align correctly from the start
+4. No post-conversion adjustments needed
+
+### Default Behavior
+
+If you leave the tempo fields empty, the converter uses Ableton's defaults (120 BPM, 4/4). This matches the previous behavior, so existing workflows are not disrupted.
+
+## Tips for Getting the Right Tempo
+
+If you are not sure of your project's BPM:
+
+1. **Check your source DAW** -- most DAWs display the tempo in the transport bar
+2. **Look at the project settings** -- Pro Tools, Resolve, and Premiere all show tempo in session settings
+3. **Use a tap tempo tool** -- tap along to the audio and measure the BPM
+4. **Check the music** -- if you imported music into your project, the original BPM is usually known
+
+## Time Signature Matters Too
+
+Setting the correct time signature affects:
+- **Grid alignment** -- bars and beats display correctly
+- **Quantization** -- snap-to-grid works as expected
+- **Loop braces** -- loop regions align to musical bars
+- **Metronome** -- the click pattern matches the music
+
+For most pop, rock, and electronic music, 4/4 is correct. But film scores, jazz, and world music frequently use other signatures.
+
+## Try It Now
+
+[Download Abletonlive.aaf v2](/) to convert your AAF files with the correct tempo and time signature from the start. Free trial includes 5 conversions.
+    `
+  },
+  {
     slug: "how-to-convert-aaf-to-ableton-live",
     title: "How to Convert AAF Files to Ableton Live (Step-by-Step Guide)",
     date: "2026-04-10",
@@ -554,12 +778,12 @@ Ableton Live is the one major DAW that cannot import AAF natively. **Abletonlive
   },
   {
     slug: "aaf-vs-omf-comparison",
-    title: "AAF vs OMF: Which Format Should You Use for Audio Exchange?",
+    title: "AAF vs OMF: Key Differences and Which Format to Choose in 2026",
     date: "2026-03-20",
-    excerpt: "A detailed comparison of AAF and OMF formats for exchanging audio projects between DAWs and video editors.",
+    excerpt: "AAF vs OMF side-by-side comparison. File size limits, automation support, fade handling, and compatibility across Pro Tools, Resolve, and Premiere Pro.",
     readTime: "5 min read",
-    metaDescription: "AAF vs OMF comparison for audio professionals. File size limits, automation support, compatibility, and which format to choose for your workflow.",
-    keywords: ["aaf vs omf", "omf vs aaf", "audio exchange format", "aaf or omf"],
+    metaDescription: "AAF vs OMF: what is the difference? Side-by-side comparison of file size limits, automation, fades, and DAW compatibility. See which format you should use in 2026.",
+    keywords: ["aaf vs omf", "omf vs aaf", "aaf or omf", "what is the difference between omf and aaf files", "omf file format"],
     content: `
 ## AAF and OMF: Two Formats, One Purpose
 
@@ -978,12 +1202,12 @@ No single tool does everything. The key is choosing tools that work well togethe
   },
   {
     slug: "does-ableton-live-export-aaf-or-omf",
-    title: "Does Ableton Live Export AAF or OMF? What You Need to Know",
+    title: "Does Ableton Live Export or Import AAF / OMF? (2026 Answer)",
     date: "2026-04-14",
-    excerpt: "Ableton Live does not export AAF or OMF natively. Here is what Ableton does support for project exchange and how to work around this limitation.",
+    excerpt: "No, Ableton Live does not export or import AAF or OMF. Here are the 3 workarounds for transferring projects between Ableton and Pro Tools, Resolve, or Premiere.",
     readTime: "6 min read",
-    metaDescription: "Does Ableton Live support AAF or OMF export? No -- but here are the workarounds for transferring Ableton projects to Pro Tools, DaVinci Resolve, and other DAWs.",
-    keywords: ["does ableton live export aaf", "does ableton live support aaf export", "does ableton live support aaf or omf export", "does ableton live export aaf or omf", "ableton aaf export", "ableton omf export"],
+    metaDescription: "Ableton Live does not support AAF or OMF export or import. Learn 3 proven workarounds to transfer projects between Ableton Live and Pro Tools, Resolve, or Premiere.",
+    keywords: ["does ableton live export aaf", "does ableton live support aaf export", "does ableton live support aaf or omf export", "does ableton live export aaf or omf", "ableton live export aaf for pro tools", "ableton live export aaf or omf for pro tools"],
     content: `
 ## The Short Answer
 
@@ -1168,12 +1392,12 @@ Logic Pro does not export fades to AAF. Bounce clips with fades in place before 
   },
   {
     slug: "best-aaf-converter-tools",
-    title: "Best AAF Converter Tools for Audio Professionals (2025)",
-    date: "2026-04-07",
-    excerpt: "A comparison of AAF converter tools for moving audio projects between DAWs. Options for converting AAF to Ableton Live, Pro Tools, and other formats.",
+    title: "Best AAF Converter Tools for Audio Professionals (2026)",
+    date: "2026-05-19",
+    excerpt: "The top AAF converter tools ranked for 2026. Convert AAF files to Ableton Live, Pro Tools, and other DAW formats with audio clips, fades, and automation intact.",
     readTime: "7 min read",
-    metaDescription: "Compare the best AAF converter tools for 2025. Convert AAF files to Ableton Live, Pro Tools, and other DAW formats with audio, fades, and automation preserved.",
-    keywords: ["aaf converter", "aaf converter tool", "convert aaf file", "aaf conversion software", "aaf file converter"],
+    metaDescription: "Best AAF converter tools for 2026. Convert AAF files to Ableton Live and other DAWs. Compare features, pricing, and which converter preserves fades and automation.",
+    keywords: ["aaf converter", "aaf file converter", "convert aaf file", "aaf conversion software", "aaf converter tool", "convert omf to aaf"],
     content: `
 ## What Is an AAF Converter?
 
@@ -1397,12 +1621,12 @@ This hybrid approach leverages the strengths of both DAWs.
   },
   {
     slug: "export-markers-media-composer-aaf",
-    title: "How to Export Markers from Media Composer and Pro Tools via AAF",
+    title: "How to Include Markers in Avid Media Composer AAF Export Settings",
     date: "2026-03-30",
-    excerpt: "A guide to handling markers when exporting AAF files from Avid Media Composer and Pro Tools, including workarounds for unsupported marker types.",
+    excerpt: "Step-by-step guide to enabling the Include Markers checkbox in Media Composer AAF export settings. Covers which marker types transfer and workarounds for unsupported markers.",
     readTime: "5 min read",
-    metaDescription: "Export markers from Avid Media Composer and Pro Tools to AAF. Learn which markers transfer, which do not, and workarounds for marker preservation.",
-    keywords: ["export markers media composer aaf", "export markers avid media composer aaf", "aaf markers", "media composer aaf export markers"],
+    metaDescription: "How to include markers in your Avid Media Composer AAF export. Find the Include Markers checkbox in export settings, learn which markers transfer, and fix common issues.",
+    keywords: ["include markers aaf export media composer", "include markers media composer aaf", "export markers media composer aaf", "media composer aaf export markers option", "include markers export settings media composer"],
     content: `
 ## Markers in AAF: The Current State
 

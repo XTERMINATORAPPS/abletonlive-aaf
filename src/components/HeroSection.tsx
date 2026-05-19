@@ -98,7 +98,6 @@ const HeroSection = ({ isGumroadModalOpen, setIsGumroadModalOpen }: HeroSectionP
   const [versionInfo, setVersionInfo] = useState<VersionInfo | null>(null);
   const [hoveredCard, setHoveredCard] = useState<string | null>(null);
   const [isMacModalOpen, setIsMacModalOpen] = useState(false);
-  const [showAllReleaseNotes, setShowAllReleaseNotes] = useState(false);
 
   useEffect(() => {
     setUserPlatform(detectPlatform());
@@ -178,7 +177,7 @@ const HeroSection = ({ isGumroadModalOpen, setIsGumroadModalOpen }: HeroSectionP
                   // Card is green if: it's being hovered OR (it's current platform AND nothing else is hovered)
                   const isGreen = hoveredCard === p.key || (currentPlatform && !hoveredCard);
 
-                  const cardClasses = `flex flex-col items-center gap-3 p-5 min-h-[120px] min-w-[150px] rounded-xl border transition-all cursor-pointer hover:scale-105 ${isGreen
+                  const cardClasses = `flex flex-col items-center justify-center gap-3 p-5 min-h-[120px] min-w-[150px] rounded-xl border transition-all cursor-pointer hover:scale-105 ${isGreen
                     ? "bg-primary/10 border-primary"
                     : "bg-card border-border hover:border-white/30"
                     }`;
@@ -237,7 +236,7 @@ const HeroSection = ({ isGumroadModalOpen, setIsGumroadModalOpen }: HeroSectionP
                   href="https://xterminatorapps.gumroad.com/l/abletonliveaaf"
                   onMouseEnter={() => setHoveredCard('gumroad')}
                   onMouseLeave={() => setHoveredCard(null)}
-                  className={`flex flex-col items-center gap-3 p-5 min-h-[120px] min-w-[150px] rounded-xl border transition-all cursor-pointer hover:scale-105 ${hoveredCard === 'gumroad'
+                  className={`flex flex-col items-center justify-center gap-3 p-5 min-h-[120px] min-w-[150px] rounded-xl border transition-all cursor-pointer hover:scale-105 ${hoveredCard === 'gumroad'
                     ? "bg-primary/10 border-primary"
                     : "bg-card border-border hover:border-white/30"
                     }`}
@@ -253,39 +252,23 @@ const HeroSection = ({ isGumroadModalOpen, setIsGumroadModalOpen }: HeroSectionP
               {versionInfo && (
                 <div className="text-sm text-muted-foreground mt-2">
                   <span className="font-medium">v{versionInfo.version}</span>
-                  <ul className="list-disc list-inside mt-1 space-y-0.5">
+                  <ul className="list-disc list-inside mt-1 space-y-0.5 max-h-[5.5rem] overflow-y-auto pr-1">
                     {(() => {
                       const notes = Array.isArray(versionInfo.release_notes)
                       ? versionInfo.release_notes
                       : (versionInfo.release_notes as string).split('\n').map(l => l.replace(/^\-\s*/, '')).filter(Boolean);
-                      const visibleNotes = showAllReleaseNotes ? notes : notes.slice(0, 3);
-                      return visibleNotes.map((note, i) => (
+                      return notes.map((note, i) => (
                         <li key={i}>{note}</li>
                       ));
                     })()}
                   </ul>
-                  {(() => {
-                    const notes = Array.isArray(versionInfo.release_notes)
-                      ? versionInfo.release_notes
-                      : (versionInfo.release_notes as string).split('\n').map(l => l.replace(/^\-\s*/, '')).filter(Boolean);
-                    if (notes.length <= 3) return null;
-                    return (
-                      <button
-                        type="button"
-                        onClick={() => setShowAllReleaseNotes(!showAllReleaseNotes)}
-                        className="mt-2 text-xs font-medium text-primary hover:text-primary/80 transition-colors"
-                      >
-                        {showAllReleaseNotes ? 'Show less' : `Show ${notes.length - 3} more`}
-                      </button>
-                    );
-                  })()}
                 </div>
               )}
               <p className="text-xs text-muted-foreground mt-2">*Free trial includes ONLY 5 conversions <br /> After the trial expires you need to buy a lifetime license that includes lifetime free updates.</p>
             </div>
           </div>
 
-          <div className="flex-1 w-full max-w-lg lg:max-w-xl">
+          <div className="flex-1 w-full max-w-lg lg:max-w-xl flex items-center justify-center">
             <div className="relative animate-float">
               <div className="absolute inset-0 bg-primary/20 rounded-xl blur-2xl" />
               <img

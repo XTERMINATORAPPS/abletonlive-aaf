@@ -5,6 +5,15 @@
         },
         {
             "path": "../csv"
+        },
+        {
+            "path": "../xterminatorapps"
+        },
+        {
+            "path": "../../../XTA"
+        },
+        {
+            "path": "../../../XTAPPS"
         }
     ]
 }
