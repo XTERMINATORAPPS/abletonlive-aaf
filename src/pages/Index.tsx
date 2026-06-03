@@ -11,6 +11,7 @@ import PricingSection from "@/components/PricingSection";
 import FAQSection from "@/components/FAQSection";
 import BugReportSection from "@/components/BugReportSection";
 import Footer from "@/components/Footer";
+import PriceIncreaseModal from "@/components/PriceIncreaseModal";
 
 const Index = () => {
   const [isGumroadModalOpen, setIsGumroadModalOpen] = useState(false);
@@ -43,6 +44,7 @@ const Index = () => {
       <FAQSection />
       <BugReportSection />
       <Footer />
+      <PriceIncreaseModal />
     </main>
   );
 };

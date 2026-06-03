@@ -228,24 +228,20 @@ const HeroSection = ({ isGumroadModalOpen, setIsGumroadModalOpen }: HeroSectionP
 
                 {/* OR Divider */}
                 <div className="flex items-center justify-center min-h-[120px] mx-4">
-                  <span className="text-2xl font-bold" style={{ color: 'hsl(0deg 0% 96.08%)' }}>Or</span>
+                  <span className="text-2xl font-bold uppercase tracking-wide" style={{ color: 'hsl(0deg 0% 96.08%)' }}>Or</span>
                 </div>
 
                 {/* Gumroad License Card */}
                 <a
                   href="https://xterminatorapps.gumroad.com/l/abletonliveaaf"
-                  onMouseEnter={() => setHoveredCard('gumroad')}
-                  onMouseLeave={() => setHoveredCard(null)}
-                  className={`flex flex-col items-center justify-center gap-3 p-5 min-h-[120px] min-w-[150px] rounded-xl border transition-all cursor-pointer hover:scale-105 ${hoveredCard === 'gumroad'
-                    ? "bg-primary/10 border-primary"
-                    : "bg-card border-border hover:border-white/30"
-                    }`}
+                  className="flex flex-col items-center justify-center gap-3 p-5 min-h-[120px] min-w-[150px] rounded-xl border border-primary bg-primary/10 transition-all cursor-pointer hover:scale-110 hover:bg-primary/20 hover:shadow-lg hover:shadow-primary/20"
                 >
                   <div className="relative flex items-center justify-center h-12">
-                    <GumroadIcon className={`w-24 h-12 transition-colors ${hoveredCard === 'gumroad' ? "text-primary" : "text-foreground"}`} />
+                    <GumroadIcon className="w-24 h-12 text-primary" />
                   </div>
                   <div className="text-center">
-                    <p className={`text-sm font-medium ${hoveredCard === 'gumroad' ? "text-primary" : "text-foreground"}`}>Buy Lifetime <br /> License</p>
+                    <p className="text-sm font-medium text-primary">Buy Lifetime License</p>
+                    <p className="text-lg font-bold text-primary">$59.99</p>
                   </div>
                 </a>
               </div>
@@ -276,6 +272,7 @@ const HeroSection = ({ isGumroadModalOpen, setIsGumroadModalOpen }: HeroSectionP
                 alt="AAF to Ableton Converter"
                 className="relative rounded-xl shadow-2xl shadow-primary/20 border border-white/10 max-w-lg"
               />
+
             </div>
           </div>
         </div>
