@@ -12,6 +12,7 @@ import FAQSection from "@/components/FAQSection";
 import BugReportSection from "@/components/BugReportSection";
 import Footer from "@/components/Footer";
 import PriceIncreaseModal from "@/components/PriceIncreaseModal";
+import TestimonialsSection from "@/components/TestimonialsSection";
 
 const Index = () => {
   const [isGumroadModalOpen, setIsGumroadModalOpen] = useState(false);
@@ -36,6 +37,7 @@ const Index = () => {
         setIsGumroadModalOpen={setIsGumroadModalOpen}
       />
       <AnnouncementMarquee />
+      <TestimonialsSection />
       <HowItWorksSection />
       <DAWSection />
       <DemoSection />
