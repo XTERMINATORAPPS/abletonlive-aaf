@@ -234,6 +234,7 @@ const HeroSection = ({ isGumroadModalOpen, setIsGumroadModalOpen }: HeroSectionP
                 {/* Gumroad License Card */}
                 <a
                   href="https://xterminatorapps.gumroad.com/l/abletonliveaaf"
+
                   className="flex flex-col items-center justify-center gap-3 p-5 min-h-[120px] min-w-[150px] rounded-xl border border-primary bg-primary/10 transition-all cursor-pointer hover:scale-110 hover:bg-primary/20 hover:shadow-lg hover:shadow-primary/20"
                 >
                   <div className="relative flex items-center justify-center h-12">
@@ -338,8 +339,7 @@ const HeroSection = ({ isGumroadModalOpen, setIsGumroadModalOpen }: HeroSectionP
 
               <a
                 href="https://xterminatorapps.gumroad.com/l/abletonliveaaf"
-                target="_blank"
-                rel="noopener noreferrer"
+
                 className="btn-primary w-full inline-flex items-center justify-center gap-2"
               >
                 Buy Now on Gumroad

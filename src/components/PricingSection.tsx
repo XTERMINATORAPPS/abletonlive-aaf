@@ -56,6 +56,7 @@ const PricingSection = () => {
 
             <a
               href="https://xterminatorapps.gumroad.com/l/abletonliveaaf"
+
               className="btn-primary w-full inline-flex items-center justify-center gap-2"
             >
               Buy Now on Gumroad

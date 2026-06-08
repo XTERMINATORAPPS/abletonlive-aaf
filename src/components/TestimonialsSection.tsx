@@ -31,9 +31,50 @@ const Stars = ({ count }: { count: number }) => (
   </div>
 );
 
+const avgRating = (testimonials.reduce((sum, t) => sum + t.rating, 0) / testimonials.length).toFixed(1);
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Abletonlive.aaf",
+  "applicationCategory": "MultimediaApplication",
+  "operatingSystem": "Windows, macOS",
+  "offers": {
+    "@type": "Offer",
+    "price": "59.99",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": avgRating,
+    "reviewCount": testimonials.length.toString(),
+    "bestRating": "5",
+    "worstRating": "1"
+  },
+  "review": testimonials.map(t => ({
+    "@type": "Review",
+    "author": {
+      "@type": "Person",
+      "name": t.name
+    },
+    "reviewRating": {
+      "@type": "Rating",
+      "ratingValue": t.rating.toString(),
+      "bestRating": "5",
+      "worstRating": "1"
+    },
+    "reviewBody": t.text
+  }))
+};
+
 const TestimonialsSection = () => {
   return (
     <section className="py-20 px-4 relative overflow-hidden">
+      {/* Schema.org structured data for Google rich results */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* Background glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-primary/5 rounded-full blur-3xl pointer-events-none" />
 

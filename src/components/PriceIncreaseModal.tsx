@@ -117,8 +117,7 @@ const PriceIncreaseModal = () => {
         {/* CTA */}
         <a
           href="https://xterminatorapps.gumroad.com/l/abletonliveaaf"
-          target="_blank"
-          rel="noopener noreferrer"
+
           className="btn-primary w-full inline-flex items-center justify-center gap-2"
         >
           Buy lifetime license now for $59.99
