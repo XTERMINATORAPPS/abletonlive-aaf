@@ -1426,7 +1426,7 @@ The most common need is converting AAF to a format that Ableton Live, or another
 - Handles embedded and externally referenced audio
 - Supports AAF from Pro Tools, DaVinci Resolve, Premiere Pro, Logic Pro, Nuendo, Cubase, and Sequoia
 
-**Pricing:** $59.99 one-time purchase with free lifetime updates. Free trial includes 5 conversions.
+**Pricing:** $59.99 one-time purchase for 2 lifetime licenses (Studio + Home) with free lifetime updates. Free trial includes 5 conversions.
 
 **Platforms:** Windows and macOS
 
@@ -1476,7 +1476,7 @@ Nuendo has the most comprehensive AAF support of any Steinberg product, includin
 | Volume automation | Yes | Yes | Partial | Yes | Yes |
 | Fades/crossfades | Yes | Yes | Yes | Yes | Yes |
 | Clip gain | Yes | Yes | Limited | Yes | Yes |
-| Price | $59.99 once | Subscription | Free | Subscription | $999 |
+| Price | $59.99 (2 licenses) | Subscription | Free | Subscription | $999 |
 | Free trial | 5 conversions | 30 days | Always free | 7 days | 30 days |
 
 ## Choosing the Right Converter

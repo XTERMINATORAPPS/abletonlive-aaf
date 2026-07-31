@@ -1,13 +1,12 @@
 import { Check, Zap } from "lucide-react";
 
 const features = [
-  "Lifetime license",
+  "2 Lifetime licenses (Studio + Home)",
   "Free Lifetime updates",
   "Email support",
   "All DAWs & NLEs formats supported",
   "No subscription required",
-  "Cross Platform",
-  "One License per device"
+  "Cross Platform"
 ];
 
 const PricingSection = () => {
@@ -59,7 +58,7 @@ const PricingSection = () => {
 
               className="btn-primary w-full inline-flex items-center justify-center gap-2"
             >
-              Buy Now on Gumroad
+              Get 2 Lifetime Licenses
             </a>
 
             <p className="mt-4 text-xs text-muted-foreground">

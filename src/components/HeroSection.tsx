@@ -241,7 +241,7 @@ const HeroSection = ({ isGumroadModalOpen, setIsGumroadModalOpen }: HeroSectionP
                     <GumroadIcon className="w-24 h-12 text-primary" />
                   </div>
                   <div className="text-center">
-                    <p className="text-sm font-medium text-primary">Buy Lifetime License</p>
+                    <p className="text-sm font-medium text-primary">Get 2 Lifetime Licenses</p>
                     <p className="text-lg font-bold text-primary">$59.99</p>
                   </div>
                 </a>
@@ -261,7 +261,7 @@ const HeroSection = ({ isGumroadModalOpen, setIsGumroadModalOpen }: HeroSectionP
                   </ul>
                 </div>
               )}
-              <p className="text-xs text-muted-foreground mt-2">*Free trial includes ONLY 5 conversions <br /> After the trial expires you need to buy a lifetime license that includes lifetime free updates.</p>
+              <p className="text-xs text-muted-foreground mt-2">*Free trial includes ONLY 5 conversions <br /> After the trial expires you need to buy 2 lifetime licenses (Studio + Home) that include lifetime free updates.</p>
             </div>
           </div>
 
@@ -321,13 +321,12 @@ const HeroSection = ({ isGumroadModalOpen, setIsGumroadModalOpen }: HeroSectionP
               </div>
 
               <ul className="space-y-3 mb-8 text-left">
-                {["Lifetime license",
+                {["2 Lifetime licenses (Studio + Home)",
                   "Free Lifetime updates",
                   "Email support",
                   "All DAWs & NLEs formats supported",
                   "No subscription required",
-                  "Cross Platform",
-                  "One License per device"].map((feature) => (
+                  "Cross Platform"].map((feature) => (
                     <li key={feature} className="flex items-center gap-3">
                       <div className="w-5 h-5 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
                         <Check className="w-3 h-3 text-primary" />
@@ -342,7 +341,7 @@ const HeroSection = ({ isGumroadModalOpen, setIsGumroadModalOpen }: HeroSectionP
 
                 className="btn-primary w-full inline-flex items-center justify-center gap-2"
               >
-                Buy Now on Gumroad
+                Get 2 Lifetime Licenses
               </a>
 
               <p className="mt-4 text-xs text-muted-foreground">

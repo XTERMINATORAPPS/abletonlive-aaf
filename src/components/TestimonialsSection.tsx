@@ -1,4 +1,11 @@
+import { useState, useEffect, useCallback } from "react";
+
 const testimonials = [
+  {
+    name: "Nicholas Williams",
+    rating: 5,
+    text: "Works really well",
+  },
   {
     name: "Ayush kumar Bhakta",
     rating: 5,
@@ -68,6 +75,23 @@ const jsonLd = {
 };
 
 const TestimonialsSection = () => {
+  const [active, setActive] = useState(0);
+  const [paused, setPaused] = useState(false);
+
+  const next = useCallback(() => {
+    setActive((prev) => (prev + 1) % testimonials.length);
+  }, []);
+
+  const prev = useCallback(() => {
+    setActive((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+  }, []);
+
+  useEffect(() => {
+    if (paused) return;
+    const interval = setInterval(next, 5000);
+    return () => clearInterval(interval);
+  }, [paused, next]);
+
   return (
     <section className="py-20 px-4 relative overflow-hidden">
       {/* Schema.org structured data for Google rich results */}
@@ -78,7 +102,7 @@ const TestimonialsSection = () => {
       {/* Background glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-primary/5 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="max-w-6xl mx-auto relative">
+      <div className="max-w-2xl mx-auto relative">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-3">
             What users are saying
@@ -88,27 +112,80 @@ const TestimonialsSection = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {testimonials.map((t, i) => (
+        {/* Carousel */}
+        <div
+          className="relative"
+          onMouseEnter={() => setPaused(true)}
+          onMouseLeave={() => setPaused(false)}
+        >
+          {/* Arrow left */}
+          <button
+            onClick={prev}
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-12 md:-translate-x-16 w-10 h-10 rounded-full bg-card/50 border border-border flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-primary/30 transition-all z-10"
+            aria-label="Previous review"
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+
+          {/* Arrow right */}
+          <button
+            onClick={next}
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-12 md:translate-x-16 w-10 h-10 rounded-full bg-card/50 border border-border flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-primary/30 transition-all z-10"
+            aria-label="Next review"
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+
+          {/* Card */}
+          <div className="overflow-hidden">
             <div
-              key={i}
-              className="flex flex-col bg-card/50 backdrop-blur-sm border border-border rounded-xl p-6 hover:border-primary/30 transition-all hover:-translate-y-1"
+              className="flex transition-transform duration-500 ease-in-out"
+              style={{ transform: `translateX(-${active * 100}%)` }}
             >
-              <Stars count={t.rating} />
-              <p className="text-sm text-foreground/90 leading-relaxed italic flex-1">
-                "{t.text}"
-              </p>
-              <div className="flex items-center gap-3 border-t border-border pt-4 mt-5">
-                <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-primary text-xs font-bold">
-                  {t.name.charAt(0).toUpperCase()}
+              {testimonials.map((t, i) => (
+                <div
+                  key={i}
+                  className="w-full flex-shrink-0 px-2"
+                >
+                  <div className="flex flex-col items-center bg-card/50 backdrop-blur-sm border border-border rounded-xl p-8 md:p-10 h-[320px]">
+                    <Stars count={t.rating} />
+                    <p className="text-base md:text-lg text-foreground/90 leading-relaxed italic text-center flex-1 mb-6">
+                      "{t.text}"
+                    </p>
+                    <div className="flex items-center gap-3 border-t border-border pt-4 w-full justify-center">
+                      <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-primary text-xs font-bold">
+                        {t.name.charAt(0).toUpperCase()}
+                      </div>
+                      <div>
+                        <p className="text-sm font-semibold text-foreground">{t.name}</p>
+                        <p className="text-xs text-muted-foreground">Verified buyer</p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div>
-                  <p className="text-sm font-semibold text-foreground">{t.name}</p>
-                  <p className="text-xs text-muted-foreground">Verified buyer</p>
-                </div>
-              </div>
+              ))}
             </div>
-          ))}
+          </div>
+
+          {/* Dots */}
+          <div className="flex justify-center gap-2 mt-6">
+            {testimonials.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setActive(i)}
+                className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                  i === active
+                    ? "bg-primary w-6"
+                    : "bg-muted-foreground/30 hover:bg-muted-foreground/50"
+                }`}
+                aria-label={`Go to review ${i + 1}`}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>

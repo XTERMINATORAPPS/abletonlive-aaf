@@ -11,7 +11,7 @@ import PricingSection from "@/components/PricingSection";
 import FAQSection from "@/components/FAQSection";
 import BugReportSection from "@/components/BugReportSection";
 import Footer from "@/components/Footer";
-import PriceIncreaseModal from "@/components/PriceIncreaseModal";
+
 import TestimonialsSection from "@/components/TestimonialsSection";
 
 const Index = () => {
@@ -46,7 +46,7 @@ const Index = () => {
       <FAQSection />
       <BugReportSection />
       <Footer />
-      <PriceIncreaseModal />
+
     </main>
   );
 };
