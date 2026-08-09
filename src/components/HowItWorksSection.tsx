@@ -1,6 +1,7 @@
+import { useState } from "react";
 import { Upload, Zap, FolderOpen } from "lucide-react";
 
-const steps = [
+const aafToAls = [
   {
     icon: Upload,
     number: "01",
@@ -21,7 +22,31 @@ const steps = [
   },
 ];
 
+const alsToAaf = [
+  {
+    icon: Upload,
+    number: "01",
+    title: "Save ALS",
+    description: "Save your session from Ableton",
+  },
+  {
+    icon: Zap,
+    number: "02",
+    title: "Drop & Convert",
+    description: "Drop the file into Abletonlive.aaf",
+  },
+  {
+    icon: FolderOpen,
+    number: "03",
+    title: "Open in any DAW or NLE",
+    description: "Open the converted .aaf in any DAW or NLE",
+  },
+];
+
 const HowItWorksSection = () => {
+  const [direction, setDirection] = useState<"aaf-to-als" | "als-to-aaf">("aaf-to-als");
+  const steps = direction === "aaf-to-als" ? aafToAls : alsToAaf;
+
   return (
     <section className="py-24 relative overflow-hidden">
       {/* Background */}
@@ -32,12 +57,45 @@ const HowItWorksSection = () => {
           Simple <span className="gradient-text">3-Step Process</span>
         </h2>
         <p className="section-subtitle">
-          Get your project into Ableton Live in minutes, not hours
+          Convert in either direction. It works both ways
         </p>
+
+        <div className="flex justify-center mb-12">
+          <div className="relative inline-flex items-center bg-card/80 backdrop-blur-xl border border-white/10 rounded-full p-1">
+            {/* Sliding pill */}
+            <div
+              className="absolute top-1 bottom-1 rounded-full bg-primary transition-all duration-300 ease-in-out"
+              style={{
+                width: "calc(50% - 4px)",
+                left: direction === "aaf-to-als" ? "4px" : "calc(50% + 0px)",
+              }}
+            />
+            <button
+              onClick={() => setDirection("aaf-to-als")}
+              className={`relative z-10 px-6 py-2.5 rounded-full text-sm font-semibold transition-colors duration-300 ${
+                direction === "aaf-to-als"
+                  ? "text-primary-foreground"
+                  : "text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              AAF to Ableton
+            </button>
+            <button
+              onClick={() => setDirection("als-to-aaf")}
+              className={`relative z-10 px-6 py-2.5 rounded-full text-sm font-semibold transition-colors duration-300 ${
+                direction === "als-to-aaf"
+                  ? "text-primary-foreground"
+                  : "text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              Ableton to AAF
+            </button>
+          </div>
+        </div>
 
         <div className="flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-4">
           {steps.map((step, index) => (
-            <div key={step.number} className="flex items-center">
+            <div key={`${direction}-${step.number}`} className="flex items-center">
               <div className="glass-card-hover p-8 text-center max-w-xs">
                 <div className="relative mb-6">
                   <div className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center mx-auto">

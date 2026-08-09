@@ -2,6 +2,7 @@ import { Check, Zap } from "lucide-react";
 
 const features = [
   "2 Lifetime licenses (Studio + Home)",
+  "Two-way conversion (AAF + ALS)",
   "Free Lifetime updates",
   "Email support",
   "All DAWs & NLEs formats supported",

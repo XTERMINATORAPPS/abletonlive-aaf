@@ -1,4 +1,4 @@
-import { ArrowRight } from "lucide-react";
+import { ArrowLeftRight } from "lucide-react";
 import proToolsLogo from "../assets/pro-tools.png";
 import davinciLogo from "../assets/davinci-resolve.png";
 import logicProLogo from "../assets/logic-pro.png";
@@ -24,7 +24,7 @@ const DAWSection = () => {
           Works With Your <span className="gradient-text">Favorite DAWs & NLEs</span>
         </h2>
         <p className="section-subtitle">
-          Import projects from industry-standard DAWs and video editors
+          Import and export projects between industry-standard DAWs, NLEs, and Ableton Live
         </p>
 
         <div className="flex flex-wrap items-center justify-center gap-4 lg:gap-6">
@@ -48,7 +48,7 @@ const DAWSection = () => {
 
           {/* Arrow */}
           <div className="hidden lg:flex items-center justify-center px-4">
-            <ArrowRight className="w-8 h-8 text-primary animate-pulse" />
+            <ArrowLeftRight className="w-8 h-8 text-primary animate-pulse" />
           </div>
 
           {/* Ableton */}

@@ -144,7 +144,7 @@ const HeroSection = ({ isGumroadModalOpen, setIsGumroadModalOpen }: HeroSectionP
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
           <div className="flex-1 text-center lg:text-left relative">
             <div className="inline-flex items-center bg-card/80 backdrop-blur-xl border border-white/10 rounded-xl px-4 py-2 mb-6">
-              <span className="text-sm text-muted-foreground">The easiest way to convert AAF to Ableton Live</span>
+              <span className="text-sm text-muted-foreground">The only two-way AAF converter for Ableton Live</span>
             </div>
 
             {/* Decorative Arrow */}
@@ -156,13 +156,12 @@ const HeroSection = ({ isGumroadModalOpen, setIsGumroadModalOpen }: HeroSectionP
             />
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-foreground">
-              Convert <span className="text-primary">AAF files</span> to Ableton Live{" "}
-              <span className="text-primary">in Seconds</span>
+              Convert <span className="text-primary">AAF files</span> to Ableton Live, <span className="text-primary">and back</span>
             </h1>
 
             <p className="text-lg text-muted-foreground mb-8 max-w-xl mx-auto lg:mx-0">
-              Seamlessly transfer your projects from Pro Tools, DaVinci Resolve, Logic Pro,
-              and more to Ableton Live. Preserve audio clips, fades, automation, and track structure.
+              Import AAF into Ableton Live or export your Live sets back to Pro Tools, DaVinci Resolve,
+              Premiere Pro, and more. Clips, fades, automation, and track structure, all preserved.
             </p>
 
             <div className="flex flex-col items-center lg:items-start gap-4">
@@ -261,7 +260,7 @@ const HeroSection = ({ isGumroadModalOpen, setIsGumroadModalOpen }: HeroSectionP
                   </ul>
                 </div>
               )}
-              <p className="text-xs text-muted-foreground mt-2">*Free trial includes ONLY 5 conversions <br /> After the trial expires you need to buy 2 lifetime licenses (Studio + Home) that include lifetime free updates.</p>
+              <p className="text-xs text-muted-foreground mt-2">*Free trial includes 5 conversions. After that, grab 2 lifetime licenses (Studio + Home) for $59.99 with free updates forever.</p>
             </div>
           </div>
 
@@ -322,6 +321,7 @@ const HeroSection = ({ isGumroadModalOpen, setIsGumroadModalOpen }: HeroSectionP
 
               <ul className="space-y-3 mb-8 text-left">
                 {["2 Lifetime licenses (Studio + Home)",
+                  "Two-way conversion (AAF + ALS)",
                   "Free Lifetime updates",
                   "Email support",
                   "All DAWs & NLEs formats supported",

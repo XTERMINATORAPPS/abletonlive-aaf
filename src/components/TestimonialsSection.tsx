@@ -2,6 +2,16 @@ import { useState, useEffect, useCallback } from "react";
 
 const testimonials = [
   {
+    name: "Milda Ambrozaite",
+    rating: 5,
+    text: "i cant believe you made this, i work in sound design and film so this is absolute life changer for me",
+  },
+  {
+    name: "blender render",
+    rating: 5,
+    text: "I tried other aaf converters like aafbridge but this is the best that i used so far. instant buy. Great job and thank you so much",
+  },
+  {
     name: "Nicholas Williams",
     rating: 5,
     text: "Works really well",

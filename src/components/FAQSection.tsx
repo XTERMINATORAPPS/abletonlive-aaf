@@ -4,11 +4,15 @@ import { useState } from "react";
 const faqs = [
     {
         question: "What DAWs and NLEs are supported?",
-        answer: "Abletonlive.aaf supports AAF files from Pro Tools, DaVinci Resolve, Logic Pro, Adobe Premiere Pro, Adobe Audition, Nuendo, Cubase, and MAGIX Vegas."
+        answer: "Abletonlive.aaf supports AAF files from Pro Tools, DaVinci Resolve, Logic Pro, Adobe Premiere Pro, Adobe Audition, Nuendo, Cubase, and MAGIX Vegas. You can also export your Ableton Live sets back to AAF for any of these applications."
+    },
+    {
+        question: "Can I export from Ableton Live to AAF?",
+        answer: "Yes! V2.1 introduces two-way conversion. You can now export your Ableton Live sets (.als) to AAF and open them in Pro Tools, DaVinci Resolve, Premiere Pro, Cubase, and more."
     },
     {
         question: "What gets preserved during conversion?",
-        answer: "Audio clips, clip positions, track structure, volume automation, fades, crossfades, and sample rate settings are all preserved in the conversion."
+        answer: "Audio clips, clip positions, track structure, volume automation, fades, crossfades, and sample rate settings are all preserved in both directions."
     },
     {
         question: "Does the trial have any limitations?",
@@ -33,10 +37,6 @@ const faqs = [
     {
         question: "Is there a refund policy?",
         answer: "No refunds are available after license activation. We recommend using the free 5-conversion trial to test the software before purchasing."
-    },
-    {
-        question: "What features are coming in future updates?",
-        answer: "We're working on pan automation transfer, custom tempo and time signature input, and batch conversion. These will be included as free updates for all license holders."
     }
 ];
 
