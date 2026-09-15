@@ -240,8 +240,8 @@ const HeroSection = ({ isGumroadModalOpen, setIsGumroadModalOpen }: HeroSectionP
                     <GumroadIcon className="w-24 h-12 text-primary" />
                   </div>
                   <div className="text-center">
-                    <p className="text-sm font-medium text-primary">Get 2 Lifetime Licenses</p>
-                    <p className="text-lg font-bold text-primary">$59.99</p>
+                    <p className="text-sm font-medium text-primary">Get Lifetime License</p>
+                    <p className="text-lg font-bold text-primary">$45</p>
                   </div>
                 </a>
               </div>
@@ -260,7 +260,7 @@ const HeroSection = ({ isGumroadModalOpen, setIsGumroadModalOpen }: HeroSectionP
                   </ul>
                 </div>
               )}
-              <p className="text-xs text-muted-foreground mt-2">*Free trial includes 5 conversions. After that, grab 2 lifetime licenses (Studio + Home) for $59.99 with free updates forever.</p>
+              <p className="text-xs text-muted-foreground mt-2">*Free trial includes 5 conversions. After that, grab a lifetime license for $45 with free updates forever.</p>
             </div>
           </div>
 
@@ -314,13 +314,13 @@ const HeroSection = ({ isGumroadModalOpen, setIsGumroadModalOpen }: HeroSectionP
 
               <div className="mb-6">
                 <div className="text-5xl font-bold text-foreground mb-2">
-                  $59.99
+                  $45
                 </div>
                 <p className="text-muted-foreground">one-time payment</p>
               </div>
 
               <ul className="space-y-3 mb-8 text-left">
-                {["2 Lifetime licenses (Studio + Home)",
+                {["Lifetime license",
                   "Two-way conversion (AAF + ALS)",
                   "Free Lifetime updates",
                   "Email support",
@@ -341,7 +341,7 @@ const HeroSection = ({ isGumroadModalOpen, setIsGumroadModalOpen }: HeroSectionP
 
                 className="btn-primary w-full inline-flex items-center justify-center gap-2"
               >
-                Get 2 Lifetime Licenses
+                Get Lifetime License
               </a>
 
               <p className="mt-4 text-xs text-muted-foreground">

@@ -1,7 +1,7 @@
 import { Check, Zap } from "lucide-react";
 
 const features = [
-  "2 Lifetime licenses (Studio + Home)",
+  "Lifetime license",
   "Two-way conversion (AAF + ALS)",
   "Free Lifetime updates",
   "Email support",
@@ -38,7 +38,7 @@ const PricingSection = () => {
 
             <div className="mb-6">
               <div className="text-5xl font-bold text-foreground mb-2">
-                $59.99
+                $45
               </div>
               <p className="text-muted-foreground">one-time payment</p>
             </div>
@@ -59,7 +59,7 @@ const PricingSection = () => {
 
               className="btn-primary w-full inline-flex items-center justify-center gap-2"
             >
-              Get 2 Lifetime Licenses
+              Get Lifetime License
             </a>
 
             <p className="mt-4 text-xs text-muted-foreground">

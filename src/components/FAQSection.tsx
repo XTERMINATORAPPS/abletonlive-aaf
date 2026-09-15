@@ -16,19 +16,19 @@ const faqs = [
     },
     {
         question: "Does the trial have any limitations?",
-        answer: "The free trial includes 5 full conversions. After that, you'll need to purchase 2 lifetime licenses (Studio + Home) for unlimited conversions."
+        answer: "The free trial includes 5 full conversions. After that, you'll need to purchase a lifetime license for unlimited conversions."
     },
     {
         question: "Is the license a subscription?",
-        answer: "No! It's a one-time purchase of $59.99 for 2 lifetime licenses (Studio + Home). No recurring fees, and you get free updates forever."
+        answer: "No! It's a one-time purchase of $45 for a lifetime license. No recurring fees, and you get free updates forever."
     },
     {
         question: "Does AAF support MIDI data?",
         answer: "No, AAF is an audio-only format. MIDI tracks need to be bounced to audio before export, or exported separately as MIDI files."
     },
     {
-        question: "How do the 2 licenses work?",
-        answer: "You get 2 lifetime licenses (Studio + Home) for $59.99. Each license is valid for one computer. Email us after purchase to receive your second license. You can transfer a license to a new computer by deactivating it from the old one."
+        question: "How does the license work?",
+        answer: "You get a lifetime license for $45. The license is valid for one computer. You can transfer it to a new computer by deactivating it from the old one."
     },
     {
         question: "What are the system requirements?",

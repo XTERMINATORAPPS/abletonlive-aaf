@@ -8,9 +8,9 @@ const Bullet = () => (
 
 const marqueeContent = (
   <>
-    Abletonlive.aaf V2.1 is here. Two licenses (Studio + Home) for{" "}
-    <span style={{ color: '#00E640', fontWeight: 800 }}>$59.99</span>
-    {" "}. Email us after purchase to receive your second license.
+    Abletonlive.aaf V2.1 is here. One lifetime license for{" "}
+    <span style={{ color: '#00E640', fontWeight: 800 }}>$45</span>
+    {" "}. No subscription, free updates forever.
   </>
 );
 

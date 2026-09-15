@@ -58,3 +58,27 @@
 - Removed data-gumroad-overlay-checkout attributes (were breaking overlay, already handled by Gumroad script)
 - Added Schema.org JSON-LD structured data to TestimonialsSection
 - Pushed to GitHub (commit ed14589)
+
+## 2026-08-15
+
+### Environment Reset
+- Reset working repository to origin/main (commit ecfb6e1)
+- Removed all transient i18n files, scripts, and uncommitted changes as requested
+
+### Dev Server
+- Started Vite dev server on http://localhost:8080/
+
+## 2026-09-15
+
+### Pricing Update: $59.99 -> $45, 2 Licenses -> 1 License
+- Changed price from $59.99 to $45 sitewide
+- Changed from "2 Lifetime Licenses (Studio + Home)" to single "Lifetime license"
+- Updated files:
+  - AnnouncementMarquee.tsx: marquee text
+  - HeroSection.tsx: Gumroad card, trial footnote, modal price, modal features list, modal CTA
+  - PricingSection.tsx: features list, price, CTA button
+  - FAQSection.tsx: trial, subscription, and license FAQ answers + question title
+  - TestimonialsSection.tsx: Schema.org price
+  - blogPosts.ts: pricing text and comparison table
+  - index.html: meta description, OG, Twitter, Schema.org SoftwareApplication, FAQ schema, HowTo schema
+- Started Vite dev server on http://localhost:8080/

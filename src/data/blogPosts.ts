@@ -1500,7 +1500,7 @@ The most common need is converting AAF to a format that Ableton Live, or another
 - Handles embedded and externally referenced audio
 - Supports AAF from Pro Tools, DaVinci Resolve, Premiere Pro, Logic Pro, Nuendo, Cubase, and Sequoia
 
-**Pricing:** $59.99 one-time purchase for 2 lifetime licenses (Studio + Home) with free lifetime updates. Free trial includes 5 conversions.
+**Pricing:** $45 one-time purchase for a lifetime license with free lifetime updates. Free trial includes 5 conversions.
 
 **Platforms:** Windows and macOS
 
@@ -1550,7 +1550,7 @@ Nuendo has the most comprehensive AAF support of any Steinberg product, includin
 | Volume automation | Yes | Yes | Partial | Yes | Yes |
 | Fades/crossfades | Yes | Yes | Yes | Yes | Yes |
 | Clip gain | Yes | Yes | Limited | Yes | Yes |
-| Price | $59.99 (2 licenses) | Subscription | Free | Subscription | $999 |
+| Price | $45 (1 license) | Subscription | Free | Subscription | $999 |
 | Free trial | 5 conversions | 30 days | Always free | 7 days | 30 days |
 
 ## Choosing the Right Converter
@@ -1934,7 +1934,7 @@ Abletonlive.aaf V2.1 is a dedicated, standalone converter that perfectly transla
 
 More importantly, Abletonlive.aaf V2.1 now features two way conversion. This means you can not only open AAF files, but you can also export your finished Ableton Live timeline as an AAF to send back to a Pro Tools mixer. It supports AAF exchanges with Pro Tools, DaVinci Resolve, Logic Pro, Premiere Pro, Adobe Audition, Nuendo, Cubase, and Vegas.
 
-Priced at just $59.99 for two lifetime licenses, covering both your studio and home machines, it is an essential utility. Do not let format incompatibility slow you down. Try the free trial of Abletonlive.aaf today and get your first five conversions completely free.
+Priced at just $45 for a lifetime license, it is an essential utility. Do not let format incompatibility slow you down. Try the free trial of Abletonlive.aaf today and get your first five conversions completely free.
     `
   },
   {

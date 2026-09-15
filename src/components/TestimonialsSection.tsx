@@ -58,7 +58,7 @@ const jsonLd = {
   "operatingSystem": "Windows, macOS",
   "offers": {
     "@type": "Offer",
-    "price": "59.99",
+    "price": "45",
     "priceCurrency": "USD"
   },
   "aggregateRating": {
