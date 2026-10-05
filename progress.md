@@ -82,3 +82,20 @@
   - blogPosts.ts: pricing text and comparison table
   - index.html: meta description, OG, Twitter, Schema.org SoftwareApplication, FAQ schema, HowTo schema
 - Started Vite dev server on http://localhost:8080/
+
+## 2026-10-05
+
+### Trial System Removal and Notice Modal
+- Removed free trial download cards and direct download buttons from HeroSection.tsx
+- Removed macOS download modal and unused platform detection helpers
+- Updated HeroSection CTA to direct Gumroad checkout for lifetime license ($45)
+- Updated FAQSection.tsx to state that there is no free trial and direct users to demo video
+- Updated Blog.tsx and BlogPost.tsx CTAs to direct purchase links
+- Created TrialNoticeModal.tsx explaining the discontinuation of the trial system due to abuse
+- Integrated TrialNoticeModal into Index.tsx on page load
+- Centered the Gumroad buy button and footnote horizontally in the HeroSection
+- Configured TrialNoticeModal to show on each visit without session caching
+- Replaced raw [OK] labels in TrialNoticeModal with clean Check icons
+- Added trial discontinuation notice to AnnouncementMarquee.tsx and email announcement
+- Retrieved and provided current direct build download links for Windows and macOS (v2.1.0)
+- Verified build with TypeScript (0 errors)

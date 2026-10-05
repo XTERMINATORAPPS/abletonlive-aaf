@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Download, Check, Zap } from "lucide-react";
+import { Check, Zap } from "lucide-react";
 import productImage from "../assets/gui.png";
 import arrowImage from "../assets/arrow.png";
 
@@ -9,36 +9,6 @@ declare global {
     gtag?: (...args: any[]) => void;
   }
 }
-
-const trackDownload = (platform: string, version: string) => {
-  if (window.gtag) {
-    window.gtag('event', 'download', {
-      event_category: 'Downloads',
-      event_label: platform,
-      value: version,
-    });
-  }
-};
-
-const WindowsIcon = ({ className }: { className?: string }) => (
-  <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
-    <path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801" />
-  </svg>
-);
-
-const AppleIcon = ({ className }: { className?: string }) => (
-  <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
-    <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
-  </svg>
-);
-
-const ChipIcon = ({ className }: { className?: string }) => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
-    <rect x="4" y="4" width="16" height="16" rx="2" />
-    <rect x="9" y="9" width="6" height="6" />
-    <path d="M15 2v2M15 20v2M2 15h2M2 9h2M20 15h2M20 9h2M9 2v2M9 20v2" />
-  </svg>
-);
 
 const GumroadIcon = ({ className }: { className?: string }) => (
   <svg viewBox="0 0 500 68.2" fill="currentColor" className={className}>
@@ -54,39 +24,13 @@ const GumroadIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
-type Platform = "windows" | "macos-intel" | "macos-arm" | "macos" | "unknown";
-type CardPlatform = "windows" | "macos";
-
 const R2_BASE_URL = "https://pub-42264b4ca9bd4bb18e3f29d49dff9647.r2.dev";
 const VERSION_JSON_URL = `${R2_BASE_URL}/version.json`;
 
 interface VersionInfo {
   version: string;
   release_notes: string | string[];
-  windows_url: string;
-  macos_intel_url: string;
-  macos_arm_url: string;
 }
-
-const platformsConfig: { key: CardPlatform; icon: typeof WindowsIcon; label: string; sublabel: string }[] = [
-  { key: "windows", icon: WindowsIcon, label: "Windows", sublabel: "x64" },
-  { key: "macos", icon: AppleIcon, label: "macOS", sublabel: "Intel & Arm" },
-];
-
-const detectPlatform = (): Platform => {
-  const userAgent = navigator.userAgent.toLowerCase();
-
-  if (userAgent.includes("win")) {
-    return "windows";
-  }
-
-  if (userAgent.includes("mac")) {
-    const isArmMac = navigator.platform === "MacIntel" && (navigator as any).maxTouchPoints > 0;
-    return isArmMac ? "macos-arm" : "macos-intel";
-  }
-
-  return "unknown";
-};
 
 interface HeroSectionProps {
   isGumroadModalOpen: boolean;
@@ -94,44 +38,15 @@ interface HeroSectionProps {
 }
 
 const HeroSection = ({ isGumroadModalOpen, setIsGumroadModalOpen }: HeroSectionProps) => {
-  const [userPlatform, setUserPlatform] = useState<Platform>("unknown");
   const [versionInfo, setVersionInfo] = useState<VersionInfo | null>(null);
-  const [hoveredCard, setHoveredCard] = useState<string | null>(null);
-  const [isMacModalOpen, setIsMacModalOpen] = useState(false);
 
   useEffect(() => {
-    setUserPlatform(detectPlatform());
-
     // Fetch version info from R2
     fetch(VERSION_JSON_URL)
       .then(res => res.json())
       .then(data => setVersionInfo(data))
       .catch(err => console.error("Failed to fetch version info:", err));
   }, []);
-
-  const getDownloadUrl = (cardKey: CardPlatform): string => {
-    if (!versionInfo) return "#";
-    if (cardKey === "windows") {
-      return `${R2_BASE_URL}/${versionInfo.windows_url}`;
-    }
-    // For macOS, select Intel or ARM based on detected platform
-    const macUrl = userPlatform === "macos-arm" ? versionInfo.macos_arm_url : versionInfo.macos_intel_url;
-    return `${R2_BASE_URL}/${macUrl}`;
-  };
-
-  const getFileName = (cardKey: CardPlatform): string => {
-    if (!versionInfo) return "";
-    if (cardKey === "windows") {
-      return versionInfo.windows_url.split('/').pop() || "";
-    }
-    const macUrl = userPlatform === "macos-arm" ? versionInfo.macos_arm_url : versionInfo.macos_intel_url;
-    return macUrl.split('/').pop() || "";
-  };
-
-  const isCurrentPlatform = (cardKey: CardPlatform): boolean => {
-    if (cardKey === "windows") return userPlatform === "windows";
-    return userPlatform === "macos-intel" || userPlatform === "macos-arm";
-  };
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 bg-background">
@@ -164,77 +79,13 @@ const HeroSection = ({ isGumroadModalOpen, setIsGumroadModalOpen }: HeroSectionP
               Premiere Pro, and more. Clips, fades, automation, and track structure, all preserved.
             </p>
 
-            <div className="flex flex-col items-center lg:items-start gap-4">
-              <h3 className="text-lg font-semibold text-foreground">Download Free Trial:*</h3>
-              <div className="flex flex-wrap justify-center lg:justify-start gap-4">
-                {platformsConfig.map((p) => {
-                  const currentPlatform = isCurrentPlatform(p.key);
-                  const Icon = p.icon;
-                  const downloadUrl = getDownloadUrl(p.key);
-                  const fileName = getFileName(p.key);
-
-                  // Card is green if: it's being hovered OR (it's current platform AND nothing else is hovered)
-                  const isGreen = hoveredCard === p.key || (currentPlatform && !hoveredCard);
-
-                  const cardClasses = `flex flex-col items-center justify-center gap-3 p-5 min-h-[120px] min-w-[150px] rounded-xl border transition-all cursor-pointer hover:scale-105 ${isGreen
-                    ? "bg-primary/10 border-primary"
-                    : "bg-card border-border hover:border-white/30"
-                    }`;
-
-                  const cardContent = (
-                    <>
-                      <div className="relative">
-                        <Icon className={`w-12 h-12 transition-colors ${isGreen ? "text-primary" : "text-foreground"
-                          }`} />
-                        {p.key === "macos" && <ChipIcon className={`absolute -bottom-1 -right-1 w-4 h-4 ${isGreen ? "text-primary" : "text-muted-foreground"}`} />}
-                      </div>
-                      <div className="text-center">
-                        <p className={`text-sm font-medium ${isGreen ? "text-primary" : "text-foreground"}`}>{p.label}</p>
-                        <p className={`text-xs ${isGreen ? "text-primary/70" : "text-muted-foreground"}`}>{p.sublabel}</p>
-                      </div>
-                    </>
-                  );
-
-                  // macOS opens modal, Windows downloads directly
-                  if (p.key === "macos") {
-                    return (
-                      <button
-                        key={p.key}
-                        onClick={() => setIsMacModalOpen(true)}
-                        onMouseEnter={() => setHoveredCard(p.key)}
-                        onMouseLeave={() => setHoveredCard(null)}
-                        className={cardClasses}
-                      >
-                        {cardContent}
-                      </button>
-                    );
-                  }
-
-                  return (
-                    <a
-                      key={p.key}
-                      href={downloadUrl}
-                      download
-                      onClick={() => trackDownload('Windows', versionInfo?.version || 'unknown')}
-                      onMouseEnter={() => setHoveredCard(p.key)}
-                      onMouseLeave={() => setHoveredCard(null)}
-                      className={cardClasses}
-                    >
-                      {cardContent}
-                    </a>
-                  );
-                })}
-
-                {/* OR Divider */}
-                <div className="flex items-center justify-center min-h-[120px] mx-4">
-                  <span className="text-2xl font-bold uppercase tracking-wide" style={{ color: 'hsl(0deg 0% 96.08%)' }}>Or</span>
-                </div>
-
+            <div className="flex flex-col items-center lg:items-start gap-4 w-full">
+              <div className="w-full flex justify-center my-2">
                 {/* Gumroad License Card */}
                 <a
                   href="https://xterminatorapps.gumroad.com/l/abletonliveaaf"
 
-                  className="flex flex-col items-center justify-center gap-3 p-5 min-h-[120px] min-w-[150px] rounded-xl border border-primary bg-primary/10 transition-all cursor-pointer hover:scale-110 hover:bg-primary/20 hover:shadow-lg hover:shadow-primary/20"
+                  className="flex flex-col items-center justify-center gap-3 p-5 min-h-[120px] min-w-[160px] rounded-xl border border-primary bg-primary/10 transition-all cursor-pointer hover:scale-110 hover:bg-primary/20 hover:shadow-lg hover:shadow-primary/20"
                 >
                   <div className="relative flex items-center justify-center h-12">
                     <GumroadIcon className="w-24 h-12 text-primary" />
@@ -260,7 +111,7 @@ const HeroSection = ({ isGumroadModalOpen, setIsGumroadModalOpen }: HeroSectionP
                   </ul>
                 </div>
               )}
-              <p className="text-xs text-muted-foreground mt-2">*Free trial includes 5 conversions. After that, grab a lifetime license for $45 with free updates forever.</p>
+              <p className="text-xs text-muted-foreground mt-2 text-center w-full">One-time payment. Lifetime license with free updates forever. Download link provided after purchase.</p>
             </div>
           </div>
 
@@ -352,82 +203,7 @@ const HeroSection = ({ isGumroadModalOpen, setIsGumroadModalOpen }: HeroSectionP
         </div>
       )}
 
-      {/* macOS Download Modal */}
-      {isMacModalOpen && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4"
-          onClick={() => setIsMacModalOpen(false)}
-        >
-          {/* Backdrop */}
-          <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" />
 
-          {/* Modal Content */}
-          <div
-            className="relative bg-card border border-border rounded-xl p-8 max-w-2xl w-full shadow-2xl"
-            onClick={(e) => e.stopPropagation()}
-          >
-            {/* Close Button */}
-            <button
-              onClick={() => setIsMacModalOpen(false)}
-              className="absolute top-4 right-4 text-muted-foreground hover:text-foreground transition-colors"
-            >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
-
-            {/* macOS Download Instructions */}
-            <div>
-              <h2 className="text-2xl font-bold text-foreground mb-4 text-center">Download for macOS</h2>
-
-              {/* Download Button */}
-              <a
-                href={getDownloadUrl("macos")}
-                download
-                onClick={() => trackDownload('macOS', versionInfo?.version || 'unknown')}
-                className="btn-primary w-full inline-flex items-center justify-center gap-2 mb-6"
-              >
-                <Download className="w-5 h-5" />
-                Download {versionInfo?.version ? `v${versionInfo.version}` : ''}
-              </a>
-
-              {/* Instructions */}
-              <div className="space-y-4 text-left mb-6">
-                <div>
-                  <h3 className="text-lg font-semibold text-foreground mb-2">Important: Disable Gatekeeper</h3>
-                  <p className="text-sm text-muted-foreground mb-3">
-                    macOS Gatekeeper may block the app from opening. Follow these steps to disable it:
-                  </p>
-                  <ol className="list-decimal list-inside space-y-2 text-sm text-muted-foreground">
-                    <li>Open Terminal (Applications &gt; Utilities &gt; Terminal)</li>
-                    <li>Run: <code className="bg-muted px-2 py-1 rounded text-xs text-foreground">sudo spctl --global-disable</code></li>
-                    <li>Enter your password when prompted</li>
-                    <li>Install the app</li>
-                    <li>Re-enable Gatekeeper: <code className="bg-muted px-2 py-1 rounded text-xs text-foreground">sudo spctl --global-enable</code></li>
-                  </ol>
-                </div>
-              </div>
-
-              {/* Video Tutorial */}
-              <div>
-                <h3 className="text-lg font-semibold text-foreground mb-3 text-center">Video Tutorial</h3>
-                <div className="aspect-video rounded-lg overflow-hidden">
-                  <iframe
-                    width="100%"
-                    height="100%"
-                    src="https://www.youtube.com/embed/fygl3oLbsSk"
-                    title="How to disable Gatekeeper on macOS"
-                    frameBorder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                    className="w-full h-full"
-                  ></iframe>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
     </section>
   );
 };

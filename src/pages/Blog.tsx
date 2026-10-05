@@ -114,13 +114,16 @@ const Blog = () => {
             Ready to <span className="gradient-text">Convert?</span>
           </h2>
           <p className="text-muted-foreground mb-8 max-w-xl mx-auto">
-            Download the free trial and convert your first 5 AAF files to
-            Ableton Live projects.
+            Get your lifetime license and convert AAF files to
+            Ableton Live projects and back with full round-trip support.
           </p>
-          <Link to="/" className="btn-primary inline-flex items-center gap-2">
-            Try It Free
+          <a
+            href="https://xterminatorapps.gumroad.com/l/abletonliveaaf"
+            className="btn-primary inline-flex items-center gap-2"
+          >
+            Get Lifetime License ($45)
             <ArrowRight className="w-4 h-4" />
-          </Link>
+          </a>
         </div>
       </section>
 

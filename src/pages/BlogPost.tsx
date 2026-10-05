@@ -344,19 +344,19 @@ const BlogPost = () => {
         </div>
         <div className="container mx-auto px-4 relative z-10 text-center">
           <h2 className="text-3xl font-bold mb-4">
-            Try <span className="gradient-text">Abletonlive.aaf</span> Free
+            Get <span className="gradient-text">Abletonlive.aaf</span>
           </h2>
           <p className="text-muted-foreground mb-8 max-w-xl mx-auto">
-            Convert your first 5 AAF files to Ableton Live projects at no cost.
+            Convert your AAF files to Ableton Live and back with full round-trip fidelity.
           </p>
           <div className="flex items-center justify-center gap-4 flex-wrap">
-            <Link
-              to="/"
+            <a
+              href="https://xterminatorapps.gumroad.com/l/abletonliveaaf"
               className="btn-primary inline-flex items-center gap-2"
             >
-              Download Free Trial
+              Get Lifetime License ($45)
               <ArrowRight className="w-4 h-4" />
-            </Link>
+            </a>
             <button
               onClick={() => navigate(-1)}
               className="btn-outline inline-flex items-center gap-2"

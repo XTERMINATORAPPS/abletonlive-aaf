@@ -15,8 +15,8 @@ const faqs = [
         answer: "Audio clips, clip positions, track structure, volume automation, fades, crossfades, and sample rate settings are all preserved in both directions."
     },
     {
-        question: "Does the trial have any limitations?",
-        answer: "The free trial includes 5 full conversions. After that, you'll need to purchase a lifetime license for unlimited conversions."
+        question: "Is there a free trial?",
+        answer: "There is no free trial. After purchase, you get instant access to the full version with unlimited conversions."
     },
     {
         question: "Is the license a subscription?",
@@ -36,7 +36,7 @@ const faqs = [
     },
     {
         question: "Is there a refund policy?",
-        answer: "No refunds are available after license activation. We recommend using the free 5-conversion trial to test the software before purchasing."
+        answer: "No refunds are available after license activation. Watch the demo video on our homepage to see the software in action before purchasing."
     }
 ];
 

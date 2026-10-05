@@ -10,7 +10,7 @@ const marqueeContent = (
   <>
     Abletonlive.aaf V2.1 is here. One lifetime license for{" "}
     <span style={{ color: '#00E640', fontWeight: 800 }}>$45</span>
-    {" "}. No subscription, free updates forever.
+    {" "}. Free trial discontinued -- downloads available exclusively to paid license holders.
   </>
 );
 
