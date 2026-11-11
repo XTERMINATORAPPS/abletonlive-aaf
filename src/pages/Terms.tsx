@@ -1,7 +1,24 @@
+import { useEffect } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
 const Terms = () => {
+  useEffect(() => {
+    document.title = "Terms of Service | Abletonlive.aaf";
+    const meta = document.querySelector('meta[name="description"]');
+    if (meta) {
+      meta.setAttribute(
+        "content",
+        "Terms of service and software license agreement for Abletonlive.aaf desktop application by XTERMINATORAPPS."
+      );
+    }
+    const canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement;
+    if (canonical) {
+      canonical.href = "https://abletonliveaaf.shop/terms";
+    }
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="min-h-screen bg-background text-foreground flex flex-col">
       <Navbar />

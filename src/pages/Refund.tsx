@@ -1,7 +1,24 @@
+import { useEffect } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
 const Refund = () => {
+  useEffect(() => {
+    document.title = "Refund Policy | Abletonlive.aaf";
+    const meta = document.querySelector('meta[name="description"]');
+    if (meta) {
+      meta.setAttribute(
+        "content",
+        "Refund policy for Abletonlive.aaf digital software licenses. Learn about evaluation resources and technical support."
+      );
+    }
+    const canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement;
+    if (canonical) {
+      canonical.href = "https://abletonliveaaf.shop/refund";
+    }
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="min-h-screen bg-background text-foreground flex flex-col">
       <Navbar />

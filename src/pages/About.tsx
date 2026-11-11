@@ -1,7 +1,24 @@
+import { useEffect } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
 const About = () => {
+  useEffect(() => {
+    document.title = "About Abletonlive.aaf | Two-Way AAF Conversion for Ableton Live";
+    const meta = document.querySelector('meta[name="description"]');
+    if (meta) {
+      meta.setAttribute(
+        "content",
+        "Learn about Abletonlive.aaf, the dedicated two-way bridge between Ableton Live and professional film, television, and audio post-production."
+      );
+    }
+    const canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement;
+    if (canonical) {
+      canonical.href = "https://abletonliveaaf.shop/about";
+    }
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="min-h-screen bg-background text-foreground flex flex-col">
       <Navbar />

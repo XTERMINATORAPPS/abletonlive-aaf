@@ -1,7 +1,24 @@
+import { useEffect } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
 const Privacy = () => {
+  useEffect(() => {
+    document.title = "Privacy Policy | Abletonlive.aaf";
+    const meta = document.querySelector('meta[name="description"]');
+    if (meta) {
+      meta.setAttribute(
+        "content",
+        "Privacy policy for Abletonlive.aaf software and website. 100% local audio processing with no remote file uploads."
+      );
+    }
+    const canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement;
+    if (canonical) {
+      canonical.href = "https://abletonliveaaf.shop/privacy";
+    }
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="min-h-screen bg-background text-foreground flex flex-col">
       <Navbar />

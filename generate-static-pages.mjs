@@ -139,6 +139,26 @@ for (const page of staticPages) {
     .replace(
       /<link rel="canonical".*?\/>/,
       `<link rel="canonical" href="https://abletonliveaaf.shop/${page.path}" />`
+    )
+    .replace(
+      /<meta property="og:title".*?\/>/,
+      `<meta property="og:title" content="${page.title}" />`
+    )
+    .replace(
+      /<meta property="og:description"[\s\S]*?\/>/,
+      `<meta property="og:description" content="${page.description}" />`
+    )
+    .replace(
+      /<meta property="og:url".*?\/>/,
+      `<meta property="og:url" content="https://abletonliveaaf.shop/${page.path}" />`
+    )
+    .replace(
+      /<meta name="twitter:title".*?\/>/,
+      `<meta name="twitter:title" content="${page.title}" />`
+    )
+    .replace(
+      /<meta name="twitter:description"[\s\S]*?\/>/,
+      `<meta name="twitter:description" content="${page.description}" />`
     );
 
   fs.writeFileSync(path.join(pageDir, "index.html"), pageHtml);
