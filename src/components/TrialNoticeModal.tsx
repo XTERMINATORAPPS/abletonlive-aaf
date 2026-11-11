@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { X, ShieldAlert, Video, ExternalLink, Check } from "lucide-react";
+import { X, ShieldAlert, Video, ExternalLink, Check, Star } from "lucide-react";
 
 interface TrialNoticeModalProps {
   isOpen?: boolean;
@@ -24,6 +24,21 @@ const TrialNoticeModal = ({ isOpen: controlledIsOpen, onClose: controlledOnClose
     const demoEl = document.getElementById("demo");
     if (demoEl) {
       demoEl.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  const handleViewReviews = () => {
+    handleClose();
+    const reviewsEl = document.getElementById("testimonials") || document.querySelector("section:has(#testimonials)");
+    if (reviewsEl) {
+      reviewsEl.scrollIntoView({ behavior: "smooth" });
+    } else {
+      const allSections = document.querySelectorAll("section");
+      allSections.forEach((sec) => {
+        if (sec.textContent && sec.textContent.includes("What users are saying")) {
+          sec.scrollIntoView({ behavior: "smooth" });
+        }
+      });
     }
   };
 
@@ -84,6 +99,25 @@ const TrialNoticeModal = ({ isOpen: controlledIsOpen, onClose: controlledOnClose
               <span>Instant download link provided after checkout</span>
             </div>
           </div>
+
+          {/* Social Proof / Testimonials badge */}
+          <div className="flex items-center justify-between p-2.5 rounded-lg bg-card/70 border border-border/80 text-xs">
+            <div className="flex items-center gap-1.5">
+              <div className="flex text-yellow-400">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-3.5 h-3.5 fill-current" />
+                ))}
+              </div>
+              <span className="font-semibold text-foreground">4.8 / 5 Rating</span>
+            </div>
+            <button
+              onClick={handleViewReviews}
+              className="text-primary hover:underline font-medium text-[11px]"
+            >
+              Read Customer Reviews
+            </button>
+          </div>
+
           <p className="text-xs">
             Want to see how it works before purchasing? Watch our complete walkthrough demo below.
           </p>

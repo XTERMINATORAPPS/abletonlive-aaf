@@ -1,5 +1,32 @@
 import { useState, useEffect, useCallback } from "react";
 
+const mediaMentions = [
+  {
+    name: "Production Expert",
+    headline: "Converts AAF files directly into Ableton Live sessions",
+    url: "https://www.production-expert.com/production-expert-1/abletonliveaaf-converts-aaf-files-directly-into-ableton-live-sessions",
+    category: "Pro Audio Industry News",
+  },
+  {
+    name: "Creative COW",
+    headline: "xterminatorapps releases Abletonlive.aaf to convert AAF files to Ableton Live projects",
+    url: "https://creativecow.net/xterminatorapps-releases-abletonlive-aaf-convert-aaf-files-to-ableton-live-projects/",
+    category: "Video & Film Post-Production",
+  },
+  {
+    name: "Audio Plugin Guy",
+    headline: "xterminatorapps releases Abletonlive.aaf converting AAF into native Ableton sessions",
+    url: "https://www.audiopluginguy.com/news-xterminatorapps-releases-abletonlive-aaf-a-tool-that-converts-aaf-files-into-native-ableton-live-sessions/",
+    category: "Plugin & Music Software",
+  },
+  {
+    name: "rekkerd.org",
+    headline: "xterminatorapps updates Abletonlive.aaf convertor to v2.1.0 with two-way exchange",
+    url: "https://rekkerd.org/xterminatorapps-updates-abletonlive-aaf-convertor-to-v2-1-0/",
+    category: "Music Production News",
+  },
+];
+
 const testimonials = [
   {
     name: "Milda Ambrozaite",
@@ -103,7 +130,7 @@ const TestimonialsSection = () => {
   }, [paused, next]);
 
   return (
-    <section className="py-20 px-4 relative overflow-hidden">
+    <section id="testimonials" className="py-20 px-4 relative overflow-hidden">
       {/* Schema.org structured data for Google rich results */}
       <script
         type="application/ld+json"
@@ -194,6 +221,44 @@ const TestimonialsSection = () => {
                 }`}
                 aria-label={`Go to review ${i + 1}`}
               />
+            ))}
+          </div>
+        </div>
+
+        {/* As Featured In / Press Mentions */}
+        <div className="mt-16 pt-12 border-t border-border/60">
+          <p className="text-center text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-8">
+            As featured and covered in industry press
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {mediaMentions.map((item, idx) => (
+              <a
+                key={idx}
+                href={item.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex flex-col justify-between p-4 rounded-xl bg-card/40 border border-border/80 hover:border-primary/50 hover:bg-card/70 transition-all duration-200"
+              >
+                <div>
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-sm font-bold text-foreground group-hover:text-primary transition-colors">
+                      {item.name}
+                    </span>
+                    <span className="text-[11px] px-2 py-0.5 rounded-full bg-secondary text-muted-foreground">
+                      {item.category}
+                    </span>
+                  </div>
+                  <p className="text-xs text-muted-foreground group-hover:text-foreground/90 transition-colors line-clamp-2">
+                    "{item.headline}"
+                  </p>
+                </div>
+                <div className="flex items-center gap-1 text-[11px] font-medium text-primary mt-3 opacity-80 group-hover:opacity-100 transition-opacity">
+                  <span>Read article</span>
+                  <svg className="w-3.5 h-3.5 transform group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </div>
+              </a>
             ))}
           </div>
         </div>

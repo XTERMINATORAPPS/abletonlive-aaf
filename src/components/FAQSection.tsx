@@ -35,6 +35,10 @@ const faqs = [
         answer: "You need Ableton Live 10 or later, and either Windows 10/11 or macOS 10.14+. Internet connection is required for license activation and updates."
     },
     {
+        question: "What does Ableton Live 13 mean for the future of Abletonlive.aaf?",
+        answer: "Live 13 introduces ARA 2 vocal editing, a native step sequencer, and built-in mixing processors, making Ableton Live a much stronger contender for serious audio production and scoring. However, Live 13 still lacks native AAF import and export. Abletonlive.aaf remains the essential bridge between Ableton Live and professional post-production DAWs like Pro Tools, DaVinci Resolve, and Premiere Pro. We are committed to full compatibility with Live 13 (including project versions and audio routing) with free updates included for all lifetime license holders."
+    },
+    {
         question: "Is there a refund policy?",
         answer: "No refunds are available after license activation. Watch the demo video on our homepage to see the software in action before purchasing."
     }
@@ -74,7 +78,7 @@ const FAQSection = () => {
                                 />
                             </button>
                             <div
-                                className={`overflow-hidden transition-all duration-300 ${openIndex === index ? "max-h-48 pb-4" : "max-h-0"
+                                className={`overflow-hidden transition-all duration-300 ${openIndex === index ? "max-h-64 pb-4" : "max-h-0"
                                     }`}
                             >
                                 <p className="px-6 text-muted-foreground">{faq.answer}</p>

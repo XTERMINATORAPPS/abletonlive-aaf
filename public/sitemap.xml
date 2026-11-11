@@ -13,6 +13,31 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://abletonliveaaf.shop/about</loc>
+    <lastmod>2026-11-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://abletonliveaaf.shop/terms</loc>
+    <lastmod>2026-11-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://abletonliveaaf.shop/privacy</loc>
+    <lastmod>2026-11-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://abletonliveaaf.shop/refund</loc>
+    <lastmod>2026-11-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
     <loc>https://abletonliveaaf.shop/blog</loc>
     <lastmod>2026-08-09</lastmod>
     <changefreq>weekly</changefreq>
@@ -171,6 +196,66 @@
   <url>
     <loc>https://abletonliveaaf.shop/blog/omf-file-format-explained</loc>
     <lastmod>2026-08-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://abletonliveaaf.shop/blog/ableton-live-13-whats-new-full-overview</loc>
+    <lastmod>2026-11-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://abletonliveaaf.shop/blog/ableton-live-13-ara2-melodyne-integration</loc>
+    <lastmod>2026-11-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://abletonliveaaf.shop/blog/ableton-live-13-native-step-sequencer-guide</loc>
+    <lastmod>2026-11-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://abletonliveaaf.shop/blog/ableton-live-13-drum-synth-complete-guide</loc>
+    <lastmod>2026-11-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://abletonliveaaf.shop/blog/ableton-live-13-mixing-mastering-transient-shaper-clipper</loc>
+    <lastmod>2026-11-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://abletonliveaaf.shop/blog/ableton-live-13-push-3-custom-layouts-performance-mixer</loc>
+    <lastmod>2026-11-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://abletonliveaaf.shop/blog/ableton-live-13-multiband-midside-racks-envelope-clips</loc>
+    <lastmod>2026-11-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://abletonliveaaf.shop/blog/ableton-live-13-vs-pro-tools-film-post-production</loc>
+    <lastmod>2026-11-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://abletonliveaaf.shop/blog/ableton-live-13-film-scoring-workflow-with-aaf</loc>
+    <lastmod>2026-11-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://abletonliveaaf.shop/blog/ableton-live-13-upgrade-guide-intro-standard-suite</loc>
+    <lastmod>2026-11-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

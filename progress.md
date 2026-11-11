@@ -99,3 +99,41 @@
 - Added trial discontinuation notice to AnnouncementMarquee.tsx and email announcement
 - Retrieved and provided current direct build download links for Windows and macOS (v2.1.0)
 - Verified build with TypeScript (0 errors)
+
+## 2026-11-11
+
+### Ableton Live 13 Announcement - 10 New Blog Posts
+- Researched the Ableton Live 13 announcement (Nov 10, 2026): ARA 2 Melodyne support, native Step Sequencer, 9-engine Drum Synth, Looplet, 32-macro racks, Softube Classic Dynamics and EQ, Push 3 custom layouts and Performance Mixer, and pre-release upgrade paths.
+- Added 10 in-depth, SEO-optimized blog posts to src/data/blogPosts.ts:
+  1. ableton-live-13-whats-new-full-overview (Full feature breakdown)
+  2. ableton-live-13-ara2-melodyne-integration (ARA 2 vocal editing)
+  3. ableton-live-13-native-step-sequencer-guide (Step sequencer, polyrhythms, per-step expression)
+  4. ableton-live-13-drum-synth-complete-guide (9 sound engines, physical modeling, MPE)
+  5. ableton-live-13-mixing-mastering-transient-shaper-clipper (Transient Shaper, Clipper, Softube pack)
+  6. ableton-live-13-push-3-custom-layouts-performance-mixer (Custom layouts, performance mixer)
+  7. ableton-live-13-multiband-midside-racks-envelope-clips (Multiband, Mid-Side racks, envelope clips)
+  8. ableton-live-13-vs-pro-tools-film-post-production (Post-production comparison and interchange)
+  9. ableton-live-13-film-scoring-workflow-with-aaf (Scoring to picture, AAF stem handoff)
+  10. ableton-live-13-upgrade-guide-intro-standard-suite (Editions comparison, pricing, beta)
+- Positioned the absence of native AAF in Live 13 to highlight Abletonlive.aaf ($45 lifetime license) as the essential bridge for post-production and scoring workflows.
+- Strictly respected ASCII-only code rules and removed any trial mentions in favor of direct purchase links.
+- Updated public/sitemap.xml with all 10 new URLs.
+- Ran npm run build and generate-static-pages.mjs (generated 40 static HTML routes successfully).
+- Started the Vite dev server on http://localhost:8080/.
+- Added press / media mentions section to src/components/TestimonialsSection.tsx with links to Production Expert, Creative COW, Audio Plugin Guy, and rekkerd.org.
+- Re-built application and generated static routes cleanly.
+- Added testimonials and rating social proof card into TrialNoticeModal.tsx with direct smooth scroll link to #testimonials.
+- Added id="testimonials" to TestimonialsSection.tsx.
+- Added Ableton Live 13 question to FAQSection.tsx explaining what Live 13 means for the future of Abletonlive.aaf.
+- Synchronized FAQ Schema.org in index.html to match.
+- Added trademark disclaimer in src/components/Footer.tsx covering Ableton, Pro Tools, DaVinci Resolve, Adobe Premiere Pro, Apple/Final Cut Pro, Nuendo/Cubase, and AMWA.
+- Created dedicated legal and company pages:
+  - src/pages/About.tsx (/about)
+  - src/pages/Terms.tsx (/terms)
+  - src/pages/Privacy.tsx (/privacy)
+  - src/pages/Refund.tsx (/refund)
+- Registered all new routes in src/App.tsx and updated footer navigation links in src/components/Footer.tsx.
+- Updated generate-static-pages.mjs to generate static HTML prerender routes for /about, /terms, /privacy, and /refund.
+- Added all legal routes to public/sitemap.xml.
+- Verified build: generated all 44 static HTML files with 0 errors.
+- Customized trademark legal disclaimer in src/components/Footer.tsx specifically for Abletonlive.aaf by XTERMINATORAPPS.

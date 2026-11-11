@@ -99,4 +99,50 @@ for (const post of blogPosts) {
   console.log(`Generated: /blog/${post.slug}/index.html`);
 }
 
-console.log(`\nDone! Generated ${blogPosts.length + 1} static HTML files.`);
+// Generate static legal and company pages
+const staticPages = [
+  {
+    path: "about",
+    title: "About Abletonlive.aaf | Two-Way AAF Conversion for Ableton Live",
+    description: "Learn about Abletonlive.aaf, the dedicated two-way bridge between Ableton Live and professional film, television, and audio post-production.",
+  },
+  {
+    path: "terms",
+    title: "Terms of Service | Abletonlive.aaf",
+    description: "Terms of service and software license agreement for Abletonlive.aaf desktop application by XTERMINATORAPPS.",
+  },
+  {
+    path: "privacy",
+    title: "Privacy Policy | Abletonlive.aaf",
+    description: "Privacy policy for Abletonlive.aaf software and website. 100% local audio processing with no remote file uploads.",
+  },
+  {
+    path: "refund",
+    title: "Refund Policy | Abletonlive.aaf",
+    description: "Refund policy for Abletonlive.aaf digital software licenses. Learn about evaluation resources and technical support.",
+  },
+];
+
+for (const page of staticPages) {
+  const pageDir = path.join(distDir, page.path);
+  fs.mkdirSync(pageDir, { recursive: true });
+
+  const pageHtml = indexHtml
+    .replace(
+      /<title>.*?<\/title>/,
+      `<title>${page.title}</title>`
+    )
+    .replace(
+      /<meta name="description"[\s\S]*?\/>/,
+      `<meta name="description" content="${page.description}" />`
+    )
+    .replace(
+      /<link rel="canonical".*?\/>/,
+      `<link rel="canonical" href="https://abletonliveaaf.shop/${page.path}" />`
+    );
+
+  fs.writeFileSync(path.join(pageDir, "index.html"), pageHtml);
+  console.log(`Generated: /${page.path}/index.html`);
+}
+
+console.log(`\nDone! Generated ${blogPosts.length + 1 + staticPages.length} static HTML files.`);

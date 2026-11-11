@@ -11,6 +11,10 @@ const Footer = () => {
     { href: "#features", label: "Features" },
     { href: "#pricing", label: "Pricing" },
     { href: "/blog", label: "Blog" },
+    { href: "/about", label: "About" },
+    { href: "/terms", label: "Terms" },
+    { href: "/privacy", label: "Privacy" },
+    { href: "/refund", label: "Refund Policy" },
     { href: "#bug-report", label: "Bug Report" },
     { href: "/help/index.html", label: "Documentation" },
   ];
@@ -56,8 +60,15 @@ const Footer = () => {
           </nav>
 
           {/* Copyright */}
-          <p className="text-sm text-muted-foreground">
+          <p className="text-sm text-muted-foreground text-center md:text-right">
             &copy; {currentYear} XTERMINATORAPPS. All rights reserved.
+          </p>
+        </div>
+
+        {/* Legal Trademark Disclaimer */}
+        <div className="mt-8 pt-8 border-t border-border/50 text-center text-xs text-muted-foreground/75 leading-relaxed max-w-4xl mx-auto">
+          <p>
+            &quot;Ableton&quot; and &quot;Ableton Live&quot; are trademarks of Ableton AG. &quot;Pro Tools&quot;, &quot;Media Composer&quot; and &quot;Avid&quot; are trademarks of Avid Technology, Inc. &quot;DaVinci Resolve&quot; is a trademark of Blackmagic Design Pty. Ltd. &quot;Adobe&quot; and &quot;Premiere Pro&quot; are trademarks of Adobe Inc. &quot;Apple&quot;, &quot;Final Cut Pro&quot; and &quot;FCPXML&quot; are trademarks of Apple Inc. &quot;Nuendo&quot; and &quot;Cubase&quot; are trademarks of Steinberg Media Technologies GmbH. AAF (Advanced Authoring Format) is a specification of the Advanced Media Workflow Association (AMWA). Abletonlive.aaf is an independent product developed by XTERMINATORAPPS and is not affiliated with, endorsed or sponsored by any of these companies; names and trademarks are used solely to describe compatibility and interoperability.
           </p>
         </div>
       </div>
