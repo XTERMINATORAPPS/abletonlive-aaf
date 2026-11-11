@@ -108,7 +108,7 @@ const TrialNoticeModal = ({ isOpen: controlledIsOpen, onClose: controlledOnClose
                   <Star key={i} className="w-3.5 h-3.5 fill-current" />
                 ))}
               </div>
-              <span className="font-semibold text-foreground">4.8 / 5 Rating</span>
+              <span className="font-semibold text-foreground">4.9 / 5 Rating (9 Reviews)</span>
             </div>
             <button
               onClick={handleViewReviews}

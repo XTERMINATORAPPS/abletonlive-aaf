@@ -29,6 +29,16 @@ const mediaMentions = [
 
 const testimonials = [
   {
+    name: "Verified User",
+    rating: 5,
+    text: "Tried the alternatives out there with absolutely terrible results, Abletonlive.aaf worked first time with no problem importing 10 x 1min AAF's from premiere with around 16 audio tracks each. Everything in its right place and volume. Feature wise, I'd love the ability for it to combine the split L+R pairs into single Stereo files",
+  },
+  {
+    name: "Verified User",
+    rating: 5,
+    text: "Incredible Product. Worked flawlessly the first time I tested it on a corporate project and it's saved me so much time! Thank you for solving this decade-old problem.",
+  },
+  {
     name: "Milda Ambrozaite",
     rating: 5,
     text: "i cant believe you made this, i work in sound design and film so this is absolute life changer for me",
